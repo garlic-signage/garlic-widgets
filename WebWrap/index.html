@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GarlicFrame</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Idle overlay - shown when countdown is active */
+        #idle-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #fff;
+            font-family: sans-serif;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #idle-overlay.visible {
+            display: flex;
+        }
+
+        #idle-countdown {
+            font-size: 5vw;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        #idle-message {
+            margin-top: 1vw;
+            font-size: 2vw;
+            opacity: 0.8;
+        }
+
+        #idle-bar-wrap {
+            margin-top: 2vw;
+            width: 40vw;
+            height: 0.5vw;
+            background: rgba(255,255,255,0.2);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        #idle-bar {
+            height: 100%;
+            background: #fff;
+            width: 100%;
+            transition: width 1s linear;
+        }
+    </style>
+</head>
+<body>
+
+<iframe id="frame" src="about:blank" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+
+<div id="idle-overlay" title="Touch to continue">
+    <div id="idle-countdown">--</div>
+    <div id="idle-message">Tap to continue</div>
+    <div id="idle-bar-wrap"><div id="idle-bar"></div></div>
+</div>
+
+<script>
+(function () {
+	// ---- Read config from URL params (passed by SMIL config.xml) ----
+	const params  = new URLSearchParams(window.location.search);
+
+	const cfg = {
+		url:          params.get('url')          || 'about:blank',
+		idleTimeout:  parseInt(params.get('idle_timeout')  || '60',  10),  // seconds
+		warnAt:       parseInt(params.get('warn_at')       || '10',  10),  // seconds before timeout show overlay
+		playerHost:   params.get('player_host')  || 'localhost',
+		playerPort:   parseInt(params.get('player_port')   || '8080', 10),
+		playerUser:   params.get('player_user')  || 'admin',
+		playerPass:   params.get('player_pass')  || '',
+		overlayMsg:   params.get('overlay_msg')  || 'Tap to continue',
+		showOverlay:  (params.get('show_overlay') || 'true') === 'true',
+	};
+
+	const playerBase = `http://${cfg.playerHost}:${cfg.playerPort}`;
+
+	// ---- DOM refs ----
+	const frame     = document.getElementById('frame');
+	const overlay   = document.getElementById('idle-overlay');
+	const countdown = document.getElementById('idle-countdown');
+	const idleMsg   = document.getElementById('idle-message');
+	const idleBar   = document.getElementById('idle-bar');
+
+	idleMsg.textContent = cfg.overlayMsg;
+
+	// ---- Load iframe ----
+	frame.src = cfg.url;
+
+	// ---- Token cache ----
+	let cachedToken     = null;
+	let tokenExpiry     = 0;
+
+	async function getToken() {
+		if (cachedToken && Date.now() < tokenExpiry) return cachedToken;
+
+		const res = await fetch(`${playerBase}/v2/oauth2/token`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+			body: JSON.stringify({ grant_type: 'password', username: cfg.playerUser, password: cfg.playerPass })
+		});
+
+		if (!res.ok) throw new Error(`Token request failed: ${res.status}`);
+
+		const data = await res.json();
+		cachedToken = data.access_token;
+		// expires_in is ISO datetime string - parse it
+		tokenExpiry = new Date(data.expires_in).getTime() - 30000; // 30s safety margin
+		return cachedToken;
+	}
+
+	async function resumePlaylist() {
+		try {
+			const token = await getToken();
+			const res = await fetch(`${playerBase}/v2/app/switch?access_token=${token}`, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+				body: JSON.stringify({ mode: 'start' })
+			});
+			if (!res.ok) {
+				console.warn('[GarlicFrame] switch failed:', res.status);
+			}
+		} catch (e) {
+			console.error('[GarlicFrame] resumePlaylist error:', e);
+		}
+	}
+
+	// ---- Idle timer logic ----
+	let lastActivity  = Date.now();
+	let countdownTick = null;
+	let overlayActive = false;
+
+	function resetIdle() {
+		lastActivity = Date.now();
+		if (overlayActive) hideOverlay();
+	}
+
+	function showOverlay(secsLeft) {
+		overlayActive = true;
+		overlay.classList.add('visible');
+		updateCountdown(secsLeft);
+	}
+
+	function hideOverlay() {
+		overlayActive = false;
+		overlay.classList.remove('visible');
+		clearInterval(countdownTick);
+		countdownTick = null;
+	}
+
+	function updateCountdown(secsLeft) {
+		countdown.textContent = secsLeft;
+		idleBar.style.width   = ((secsLeft / cfg.warnAt) * 100) + '%';
+	}
+
+	function startCountdown(secsLeft) {
+		if (countdownTick) return; // already running
+		showOverlay(secsLeft);
+		countdownTick = setInterval(() => {
+			secsLeft--;
+			if (secsLeft <= 0) {
+				clearInterval(countdownTick);
+				countdownTick = null;
+				hideOverlay();
+				resumePlaylist();
+			} else {
+				updateCountdown(secsLeft);
+			}
+		}, 1000);
+	}
+
+	// Main poll loop - check idle every second
+	setInterval(() => {
+		const elapsed = (Date.now() - lastActivity) / 1000;
+		const remaining = cfg.idleTimeout - elapsed;
+
+		if (remaining <= 0) {
+			// Already handled by countdown reaching 0
+			return;
+		}
+
+		if (remaining <= cfg.warnAt && cfg.showOverlay && !overlayActive) {
+			startCountdown(Math.ceil(remaining));
+		}
+	}, 500);
+
+	// ---- Activity listeners ----
+	['mousedown', 'mousemove', 'touchstart', 'touchmove', 'keydown', 'wheel', 'pointerdown'].forEach(evt => {
+		document.addEventListener(evt, resetIdle, { passive: true });
+	});
+
+	// Tap overlay to cancel return
+	overlay.addEventListener('pointerdown', (e) => {
+		e.stopPropagation();
+		resetIdle();
+	});
+
+	// Try to catch activity inside iframe (same-origin only - will silently fail cross-origin)
+	frame.addEventListener('load', () => {
+		try {
+			const fdoc = frame.contentDocument || frame.contentWindow.document;
+			['mousedown', 'touchstart', 'keydown', 'pointerdown'].forEach(evt => {
+				fdoc.addEventListener(evt, resetIdle, { passive: true });
+			});
+		} catch (_) { /* cross-origin - ignore */ }
+	});
+
+	console.log('[GarlicFrame] Loaded. URL:', cfg.url, '| Idle timeout:', cfg.idleTimeout, 's');
+})();
+</script>
+</body>
+</html>
