@@ -2,9 +2,10 @@
 dist/
 
 # IntelliJ everything expect runConfigurations/
-.idea/*
+.idea/**
 !.idea/runConfigurations/
+!.idea/runConfigurations/**
 
 # VSCode everything expect tasks.json
-.vscode/*
+.vscode/**
 !.vscode/tasks.json
