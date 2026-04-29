@@ -1,0 +1,10 @@
+# Build output
+dist/
+
+# IntelliJ everything expect runConfigurations/
+.idea/*
+!.idea/runConfigurations/
+
+# VSCode everything expect tasks.json
+.vscode/*
+!.vscode/tasks.json
