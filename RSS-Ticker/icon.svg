@@ -1,9 +1,8 @@
 <svg width="680" height="680" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-    <title>WebWrap Icon</title>
+    <title>RSS Ticker Icon</title>
+    <rect fill="#b87a20" height="680" id="svg_1" width="680"/>
     <g class="layer">
-        <title>Layer 1</title>
-        <rect fill="#b87a20" height="680" id="svg_1" width="680"/>
-        <g id="GarlicLogo" transform="translate(10 0) translate(-10 0) translate(10 0) translate(10 0) translate(10 0) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -10) translate(1 0) translate(1 0) translate(10 0) translate(0 -10) translate(-10 0) translate(10 0) translate(10 0) matrix(0.734694 0 0 0.734694 499.735 174.735)">
+        <g id="GarlicLogo" transform="matrix(0.734694 0 0 0.734694 554.735 20.735)">
             <rect fill="#ffffff" height="120" id="svg_12" width="145" x="0" y="0"/>
             <path d="m66.52,36.37c0,0 -13.66,-0.64 -17.76,10.49c0,0 -3.99,12.11 9.39,18.8a31.44,31.44 0 0 0 27.09,-0.64a16.99,16.99 0 0 0 6.71,-6.4a15.1,15.1 0 0 0 -0.67,-16.33a27.84,27.84 0 0 0 -6.35,-5.72a53.35,53.35 0 0 0 -5.15,-3.18c-2.7,-1.45 -5.93,-2.77 -7.38,-4.18c0,0 -3.92,-3.07 -3.5,-9.69c0,0 -2.89,7.03 2.83,12.28a26.68,26.68 0 0 0 5.98,4.04c0.16,0.08 1.88,1.08 3.27,2c3.53,2.32 8.4,5.4 8.43,11.72a12.41,12.41 0 0 1 -2.58,7.99a16.08,16.08 0 0 1 -7.18,5.72c0,0 -8.71,3.56 -17.27,0.12c0,0 -10.77,-4.25 -9.63,-15.25a9.96,9.96 0 0 1 2.04,-4.81a19.07,19.07 0 0 1 11.73,-6.96" fill="#b87a20" id="svg_9" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
             <rect fill="#b87a20" height="3.23" id="svg_10" width="16.78" x="77.72" y="58.72"/>
@@ -11,17 +10,14 @@
             <path d="m93.72,36.66c0,0 9.25,5.39 8.94,15.54a17.2,17.2 0 0 1 -11.3,15.57c0,0 9.37,-6.06 9.26,-16.42c0,0 0.21,-7.66 -6.9,-14.69" fill="#b87a20" id="svg_23" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
             <path d="m70.67,57.62c0,0 -5.86,-0.46 -9.2,-4.31c0,0 -2.23,-2.09 -2.73,-7.21c-0.1,-0.92 -2.65,5.59 2.84,10.52a13.51,13.51 0 0 0 9.08,3.37c0,0 0,-0.24 0.01,-2.37" fill="#b87a20" id="svg_13" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
         </g>
-        <g id="world" stroke="#d4a855" transform="matrix(1 0 0 1 0 0) translate(0 1) translate(0 -1) translate(0 -1) translate(0 -1) matrix(3.23453 0 0 3.23453 49.3763 54.6517)">
-            <circle cx="90" cy="90" fill="none" id="svg_15" r="90" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
-            <line id="svg_16" stroke-linecap="round" stroke-width="13" x1="90" x2="90" y1="0" y2="180"/>
-            <line id="svg_17" stroke-linecap="round" stroke-width="13" x1="0" x2="180" y1="90" y2="90"/>
-            <ellipse cx="90" cy="90" fill="none" id="svg_18" rx="45" ry="90" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
-            <path d="m0,50q90,22 180,0" fill="none" id="svg_19" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
-            <path d="m0,130q90,-22 180,0" fill="none" id="svg_20" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+        <g fill="#d4a855" id="rss" transform="translate(0 1) matrix(1.55511 0 0 1.55511 -56.9932 -60.9339)">
+            <path d="m108.56,342.78a60.34,60.34 0 1 0 60.56,60.44a60.63,60.63 0 0 0 -60.56,-60.44z" id="svg_2"/>
+            <path d="m48,186.67l0,86.55c52,0 101.94,15.39 138.67,52.11s52,86.56 52,138.67l86.66,0c0,-151.56 -125.66,-277.33 -277.33,-277.33z" id="svg_3"/>
+            <path d="m48,48l0,86.56c185.25,0 329.22,144.08 329.22,329.44l86.78,0c0,-229.34 -186.33,-416 -416,-416z" id="svg_4"/>
         </g>
         <g id="labelText" transform="translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) matrix(1 0 0 1 0 0) translate(-1 0) translate(0.98838 482.617) scale(1.00147 1) translate(-0.98838 -482.617) translate(0.98838 482.676) scale(1.00147 1) translate(-0.98838 -482.676)">
             <rect fill="#ffffff" fill-opacity="0.6" height="110" id="svg_7" transform="matrix(0.988372 0 0 0.892857 -38.5465 450.018)" width="686" x="40" y="38.5"/>
-            <text fill="#000000" font-family="Courier" font-size="88" font-weight="900" id="svg_6" text-anchor="middle" transform="matrix(1.00147 0 0 1 -1.00146 444)" x="340" y="118">**WEB-WRAP**</text>
+            <text fill="#000000" font-family="Courier" font-size="88" font-weight="900" id="svg_6" text-anchor="middle" transform="matrix(1.00147 0 0 1 -1.00146 444)" x="340" y="118">**TICKER**</text>
         </g>
     </g>
 </svg>

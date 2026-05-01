@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" 
-  xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0">
 
-  <name short="rss-news">RSS-News Ticker</name>
-  <id>{ABCDD-0C36-4FCB-97EE-F9A00F8D77C2}</id>
-  <version>1.0.0.0</version>
-  <icon src="icon.jpg"/>
-  <content src="index.html"/>
+    <name short="rss-news">RSS-Ticker</name>
+    <description>RSS-Ticker based on HTML Canvas for Digital Signage Screens</description>
+    <author href="https://sagiadinos.com.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
+    <content src="index.html"/>
+    <icon src="icon.png"/>
 
-  <preference name="url" ia:types="text" ia:mandatory="true" ia:tooltip="e.g. https://smil-control.com/feed.rss" />
-  <preference name="font_size" ia:default="30" ia:types="integer"  />
-  <preference name="bgcolor" ia:types="color" ia:default="#008080" ia:previewbg="true"/>
-  <preference name="color" ia:types="color" ia:default="#ffffff" />
+    <preference name="url" ia:types="text" ia:mandatory="true" ia:tooltip="URl of RSS Feed" />
+    <preference name="font_size" ia:default="30" ia:tooltip="Font size"  ia:types="integer"  />
+    <preference name="bgcolor" ia:types="color"  ia:tooltip="Background color"  ia:default="#008080" ia:previewbg="true"/>
+    <preference name="color" ia:types="color"  ia:tooltip="Text color"  ia:default="#ffffff" />
 </widget>

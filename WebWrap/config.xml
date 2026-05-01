@@ -1,84 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.garlic-signage.garlic-frame"
-        version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0">
 
-    <name>GarlicFrame</name>
-    <description>Web-Wrapper Widget for Garlic-Player. Opens any URL in an iframe and returns to the default playlist after a configurable idle timeout.</description>
-    <author href="https://garlic-signage.com">GarlicSignage</author>
-
+    <name>WebWrap</name>
+    <description>Web-Wrapper Widget for GarlicSignage. Opens any URL in an iframe and returns to the default playlist after a configurable idle timeout.</description>
+    <author href="https://sagiadinos.com.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 
-    <!-- Required: URL to display in iframe -->
-    <preference name="url"
-                value="https://example.com"
-                label="URL"
-                description="The web page URL."
-                type="string"
-                required="true"/>
+    <preference name="url" value="https://example.com" ia:tooltip="URL" ia:types="string" ia:mandatory="true"/>
+    <preference name="idle_timeout" ia:default="60" ia:tooltip="Idle Timeout (seconds)" ia:types="number" ia:mandatory="false"/>
+    <preference name="warn_at" ia:default="10" ia:tooltip="Warn Countdown (seconds)" ia:types="number" ia:mandatory="false"/>
+    <preference name="show_overlay" ia:default="true" ia:tooltip="Show Overlay" ia:types="string" ia:mandatory="false"/>
+    <preference name="overlay_msg" ia:default="Tap to continue" ia:tooltip="Overlay Message" ia:types="string" ia:mandatory="false"/>
+    <preference name="player_host" ia:default="localhost" ia:tooltip="Player API Host" ia:types="string" ia:mandatory="false"/>
+    <preference name="player_port" ia:default="8080" ia:tooltip="Player API Port" ia:types="number" ia:mandatory="false"/>
 
-    <!-- Idle timeout in seconds before returning to playlist -->
-    <preference name="idle_timeout"
-                value="60"
-                label="Idle Timeout (seconds)"
-                description="Seconds of inactivity before switching back to the default playlist."
-                type="number"
-                required="false"/>
-
-    <!-- Seconds before timeout at which to show the countdown overlay -->
-    <preference name="warn_at"
-                value="10"
-                label="Warn Countdown (seconds)"
-                description="Show countdown overlay this many seconds before returning to playlist."
-                type="number"
-                required="false"/>
-
-    <!-- Whether to show the countdown overlay at all -->
-    <preference name="show_overlay"
-                value="true"
-                label="Show Overlay"
-                description="Show countdown overlay before returning to playlist (true/false)."
-                type="string"
-                required="false"/>
-
-    <!-- Message shown in the overlay -->
-    <preference name="overlay_msg"
-                value="Tap to continue"
-                label="Overlay Message"
-                description="Text shown in the idle countdown overlay."
-                type="string"
-                required="false"/>
-
-    <!-- Player API host - use localhost when widget runs on the player itself -->
-    <preference name="player_host"
-                value="localhost"
-                label="Player API Host"
-                description="Hostname or IP of the Garlic-Player REST API (usually localhost)."
-                type="string"
-                required="false"/>
-
-    <!-- Player API port -->
-    <preference name="player_port"
-                value="8080"
-                label="Player API Port"
-                description="Port of the Garlic-Player REST API."
-                type="number"
-                required="false"/>
-
-    <!-- Player API credentials -->
-    <preference name="player_user"
-                value="admin"
-                label="Player API User"
-                description="Username for the Garlic-Player REST API."
-                type="string"
-                required="false"/>
-
-    <preference name="player_pass"
-                value=""
-                label="Player API Password"
-                description="Password for the Garlic-Player REST API (leave empty if none)."
-                type="string"
-                required="false"/>
 
 </widget>
