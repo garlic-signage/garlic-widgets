@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>SmilControl Canvas Ticker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			#myTicker
+			{
+				position: absolute; 
+				left: 0;
+				top:0;	
+			}
+		</style>
+		<script>
+			window.addEventListener('resize', resizeCanvas, false);
+			const _move_pixel        = 1;
+			const _max_canvas_width  = 16384;
+			var MyCanvas	         = {};
+			var ctx		             = {};
+			var x                    = 0;
+			var margin               = 10;
+			var ticker_content       = "";
+			var text_width           = 0;
+			var ticker_color         = "yellow"
+			var font_size            = 30
+
+			function initCanvas()
+			{
+				MyCanvas = document.getElementById("myTicker");
+				ctx    = MyCanvas.getContext("2d");
+			}
+
+			function resizeCanvas()
+			{
+				MyCanvas.width  = window.innerWidth;
+				margin          = Math.round(parseInt(font_size) / 3)
+				MyCanvas.height = parseInt(font_size) + margin;
+				ctx.font        = "bold " + font_size + "px Sans";
+				ctx.fillStyle   = ticker_color;
+				text_width      = Math.round(ctx.measureText(ticker_content).width) + 1;
+				x               = MyCanvas.width;
+			}			
+
+			function isNewContentSizeValid(txt)
+			{
+				return (ctx.measureText(txt).width  < _max_canvas_width);
+			}
+
+			function moveTicker()
+			{
+				ctx.clearRect(0,0, MyCanvas.width, MyCanvas.height);
+				if (x > -text_width)
+					x = x - _move_pixel;
+				else
+					x = MyCanvas.width;
+				ctx.fillText(ticker_content, x, MyCanvas.height - margin);	
+				window.requestAnimationFrame(moveTicker);
+			}
+
+			function displayTicker(ticker_text)
+			{
+				ticker_content = ticker_text;
+				resizeCanvas();
+				window.requestAnimationFrame(moveTicker);
+			}
+
+			function createTickerOutput(feed_obj)
+			{
+				var ticker_text = " +++ ";
+				var tmp_text    = "";
+				for (var i = 0; i < feed_obj.query.count; i++)
+				{
+					tmp_text =  feed_obj.query.results.item[i].title+ " +++ ";
+					if (isNewContentSizeValid(ticker_text + tmp_text))
+						ticker_text += tmp_text;
+					else
+						break;
+
+				}
+				return ticker_text;
+			}
+
+
+		function handleTicker(response)
+		{
+			var feed_obj    = JSON.parse(response);
+			var ticker_text = createTickerOutput(feed_obj);
+			displayTicker(ticker_text, feed_obj.query.count);			
+		}		
+		
+		function getRSS(url)
+		{
+			var request_url = 'https://smil-control.com/samples/fetch-rss.php?feed_url='+url;
+		
+			var MyRequest = new XMLHttpRequest(); // a new request
+			MyRequest.open("GET", request_url, true);
+			MyRequest.onload = function (e)
+			{
+				if (MyRequest.readyState === 4)
+				{
+					if (MyRequest.status === 200)
+					{
+						handleTicker(MyRequest.responseText);
+					}
+					else
+					{
+						console.error(MyRequest.statusText);
+					}
+				}
+			};
+			MyRequest.onerror = function (e)
+			{
+				console.error(MyRequest.statusText);
+			};
+			MyRequest.send(null);
+		}
+
+		function getUrlParam(name, default_value)
+		{
+			var url   = new URL(window.location);
+			var value = url.searchParams.get(name);
+			if (value == "" || value == null)
+			{
+				value = default_value;
+			}
+			return value;
+		}
+		
+		
+		function start()
+		{
+			initCanvas();
+			getRSS(getUrlParam("url", "https://smil-control.com/feed.rss"));
+			ticker_color = getUrlParam("color", "yellow");
+			font_size = getUrlParam("font_size", "30");
+			document.body.style.background = getUrlParam("bgcolor", "transparent")
+		}		
+			
+
+	</script>	
+	<body onload="start()">
+		<canvas id="myTicker">No Canvas</canvas>
+	</body>
+</html>
