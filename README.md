@@ -1,6 +1,6 @@
 # garlic-widgets
 
-Widget collection for SMIL-compatible digital signage players (garlic-player, IAdea, and others).
+Widget collection for SMIL-compatible digital signage players like garlic-player, IAdea, and others.
 
 ## Requirements
 
