@@ -7,13 +7,13 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
 
-    <preference name="url" value="https://example.com" ia:tooltip="URL" ia:types="string" ia:mandatory="true"/>
-    <preference name="idle_timeout" ia:default="60" ia:tooltip="Idle Timeout (seconds)" ia:types="number" ia:mandatory="false"/>
-    <preference name="warn_at" ia:default="10" ia:tooltip="Warn Countdown (seconds)" ia:types="number" ia:mandatory="false"/>
-    <preference name="show_overlay" ia:default="true" ia:tooltip="Show Overlay" ia:types="string" ia:mandatory="false"/>
-    <preference name="overlay_msg" ia:default="Tap to continue" ia:tooltip="Overlay Message" ia:types="string" ia:mandatory="false"/>
-    <preference name="player_host" ia:default="localhost" ia:tooltip="Player API Host" ia:types="string" ia:mandatory="false"/>
-    <preference name="player_port" ia:default="8080" ia:tooltip="Player API Port" ia:types="number" ia:mandatory="false"/>
+    <preference name="url" value="https://example.com" ia:label="URL" ia:types="string" ia:mandatory="true"/>
+    <preference name="idle_timeout" ia:default="60" ia:label="Idle Timeout (seconds)" ia:types="number" ia:mandatory="false"/>
+    <preference name="warn_at" ia:default="10" ia:label="Warn Countdown (seconds)" ia:types="number" ia:mandatory="false"/>
+    <preference name="show_overlay" ia:default="true" ia:label="Show Overlay" ia:types="string" ia:mandatory="false"/>
+    <preference name="overlay_msg" ia:default="Tap to continue" ia:label="Overlay Message" ia:types="string" ia:mandatory="false"/>
+    <preference name="player_host" ia:default="localhost" ia:label="Player API Host" ia:types="string" ia:mandatory="false"/>
+    <preference name="player_port" ia:default="8080" ia:label="Player API Port" ia:types="number" ia:mandatory="false"/>
 
 
 </widget>

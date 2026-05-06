@@ -7,8 +7,8 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
 
-    <preference name="url" ia:types="text" ia:mandatory="true" ia:tooltip="URl of RSS Feed" />
-    <preference name="font_size" ia:default="30" ia:tooltip="Font size"  ia:types="integer"  />
-    <preference name="bgcolor" ia:types="color"  ia:tooltip="Background color"  ia:default="#008080" ia:previewbg="true"/>
-    <preference name="color" ia:types="color"  ia:tooltip="Text color"  ia:default="#ffffff" />
+    <preference name="url" ia:types="text" ia:mandatory="true" ia:label="RSS-URl" ia:tooltip="URl of RSS Feed" />
+    <preference name="font_size" ia:default="30" ia:label="Font size"  ia:types="integer"  />
+    <preference name="bgcolor" ia:types="color"  ia:label="Background color"  ia:default="#008080" ia:previewbg="true"/>
+    <preference name="color" ia:types="color"  ia:label="Text color"  ia:default="#ffffff" />
 </widget>
