@@ -87,10 +87,10 @@
 
 	const cfg = {
 		url:          params.get('url')          || 'about:blank',
-		idleTimeout:  parseInt(params.get('idle_timeout')  || '60',  10),  // seconds
-		warnAt:       parseInt(params.get('warn_at')       || '10',  10),  // seconds before timeout show overlay
+		idleTimeout:  Number(params.get('idle_timeout'))  || 60,  // seconds
+		warnAt:       Number(params.get('warn_at'))       || 10,  // seconds before timeout show overlay
 		playerHost:   params.get('player_host')  || 'localhost',
-		playerPort:   parseInt(params.get('player_port')   || '8080', 10),
+		playerPort:   Number(params.get('player_port')) || 8080,
 		playerUser:   params.get('player_user')  || 'admin',
 		playerPass:   params.get('player_pass')  || '',
 		overlayMsg:   params.get('overlay_msg')  || 'Tap to continue',
