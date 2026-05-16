@@ -165,8 +165,8 @@ body {
 
 .night::before {
     background: linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.35)
+            rgba(2, 4, 14, 0.90),
+            rgba(2, 4, 14, 0.45)
     );
 }
 
