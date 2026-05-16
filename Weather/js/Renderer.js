@@ -56,7 +56,7 @@ export class Renderer
 	render(data)
 	{
 		const condition = data.condition ?? 'unknown';
-		const bgClass   = `bg-${condition}${data.is_day ? '' : '-night'}`;
+		const bgClass   = `bg-${condition}${data.is_day ? '' : ' night'}`;
 
 		this.#root.className = `widget ${bgClass}`;
 		this.#root.innerHTML = `
