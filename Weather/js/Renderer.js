@@ -15,8 +15,11 @@ export class Renderer
 	 */
 	static #ICON_MAP = {
 		sunny:               'clear-day',
+		clear_night:         'clear-night',
 		mostly_sunny:        'partly-cloudy-day',
+		mostly_clear_night:  'partly-cloudy-night',
 		partly_cloudy:       'partly-cloudy-day',
+		mostly_cloudy_night: 'partly-cloudy-night',
 		cloudy:              'overcast',
 		fog:                 'fog',
 		drizzle:             'drizzle',
@@ -56,7 +59,7 @@ export class Renderer
 	render(data)
 	{
 		const condition = data.condition ?? 'unknown';
-		const bgClass   = `bg-${condition}${data.is_day ? '' : ' night'}`;
+		const bgClass = `bg-${condition}${!data.is_day && !condition.includes('night') ? ' night' : ''}`;
 
 		this.#root.className = `widget ${bgClass}`;
 		this.#root.innerHTML = `
@@ -80,7 +83,8 @@ export class Renderer
 		if (!isDay)
 		{
 			const nightKey = condition.endsWith('_night') ? condition : `${condition}_night`;
-			if (Renderer.#ICON_MAP[nightKey]) return Renderer.#ICON_MAP[nightKey];
+			if (Renderer.#ICON_MAP[nightKey])
+				return Renderer.#ICON_MAP[nightKey];
 		}
 		return Renderer.#ICON_MAP[condition] ?? Renderer.#ICON_MAP['unknown'];
 	}
