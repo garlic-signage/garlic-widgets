@@ -31,11 +31,28 @@ const config = {
     cacheTtlMs: params.get('refresh')   ? parseInt(params.get('refresh')) : 60 * 60 * 1000,
 };
 
-if (!config.lat && !config.lon && !config.city) {
+if (!config.lat && !config.lon && !config.city)
     config.city = 'Jakarta';
-}
 
-const i18n     = new I18n({ de, en, es, fr, el, ru }, config.lang);
+const langMap = {
+	de: 'de', en: 'en', es: 'es', fr: 'fr', el: 'el', ru: 'ru',
+
+	german:     'de',
+	english:    'en',
+	spanish:    'es',
+	french:     'fr',
+	greek:      'el',
+	russian:    'ru',
+
+	deutsch:    'de',
+	español:    'es',
+	français:   'fr',
+	ελληνικά:   'el',
+	русский:    'ru'
+};
+
+const normalizedLang = langMap[config.lang?.toLowerCase()] || 'en';
+const i18n     = new I18n({ de, en, es, fr, el, ru }, normalizedLang);
 const service  = new WeatherService({ provider: config.provider, apiKey: config.apiKey, cacheTtlMs: config.cacheTtlMs });
 const renderer = new Renderer(i18n);
 

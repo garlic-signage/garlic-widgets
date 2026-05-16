@@ -23,7 +23,7 @@
         <ia:options>weatherapi</ia:options>
     </preference>
     <preference name="apikey" ia:types="text" ia:label="API Key" ia:tooltip="Required for OpenWeatherMap and WeatherApi" />
-    <preference name="language" ia:types="combo" ia:mandatory="true" ia:default="en">
+    <preference name="lang" ia:types="combo" ia:mandatory="true" ia:default="en">
         <ia:options value="en">English</ia:options>
         <ia:options value="de">German</ia:options>
         <ia:options value="es">Spanish</ia:options>
