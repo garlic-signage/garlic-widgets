@@ -2,6 +2,10 @@ import { WeatherService } from './WeatherService.js';
 import { I18n }           from './i18n/I18n.js';
 import { de }             from './i18n/de.js';
 import { en }             from './i18n/en.js';
+import { es }             from './i18n/es.js';
+import { fr }             from './i18n/fr.js';
+import { el }             from './i18n/el.js';
+import { ru }             from './i18n/ru.js';
 import { Renderer }       from './Renderer.js';
 
 /**
@@ -11,7 +15,7 @@ import { Renderer }       from './Renderer.js';
  * ?apikey=XXXX                                    (optional, depends on provider)
  * ?lat=48.13&lon=11.57                            (coordinates, take priority)
  * ?city=Munich                                    (city name, fallback)
- * ?lang=de|en                                     (default: de)
+ * ?lang=de|en|es|fr|el|ru                     (default: de)
  * ?refresh=3600000                                (cache TTL in ms, default: 1h)
  */
 
@@ -23,7 +27,7 @@ const config = {
     lat:        params.get('lat')       ? parseFloat(params.get('lat')) : null,
     lon:        params.get('lon')       ? parseFloat(params.get('lon')) : null,
     city:       params.get('city')      ?? null,
-    lang:       params.get('lang')      ?? 'de',
+    lang:       params.get('lang')      ?? 'en',
     cacheTtlMs: params.get('refresh')   ? parseInt(params.get('refresh')) : 60 * 60 * 1000,
 };
 
@@ -31,7 +35,7 @@ if (!config.lat && !config.lon && !config.city) {
     config.city = 'Jakarta';
 }
 
-const i18n     = new I18n({ de, en }, config.lang);
+const i18n     = new I18n({ de, en, es, fr, el, ru }, config.lang);
 const service  = new WeatherService({ provider: config.provider, apiKey: config.apiKey, cacheTtlMs: config.cacheTtlMs });
 const renderer = new Renderer(i18n);
 
