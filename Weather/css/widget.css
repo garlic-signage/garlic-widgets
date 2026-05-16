@@ -1,0 +1,587 @@
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+    --font-main:   'Outfit', sans-serif;
+    --font-mono:   'JetBrains Mono', monospace;
+
+    --clr-text:         #ffffff;
+    --clr-text-muted:   rgba(255,255,255,0.80);
+    --clr-text-dim:     rgba(255,255,255,0.80);
+    --clr-glass:        rgba(255,255,255,0.10);
+    --clr-glass-border: rgba(255,255,255,0.18);
+
+    --overlay-day:   rgba(0,0,0,0.10);
+    --overlay-night: rgba(0,0,0,0.35);
+
+    --radius-card:  1.5rem;
+    --radius-inner: 1rem;
+
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background: #0d1117;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* ============================================================
+   Widget Container
+   ============================================================ */
+.widget {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    overflow: hidden;
+    color: var(--clr-text);
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image var(--transition);
+    isolation: isolate;
+}
+
+/* Glass overlay via pseudo-element */
+.widget::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            160deg,
+            rgba(255,255,255,0.06) 0%,
+            rgba(255,255,255,0.01) 60%,
+            rgba(0,0,0,0.10) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.widget > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================================
+   Background images — Landscape (default)
+   ============================================================ */
+
+.bg-sunny,
+.bg-clear-night {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/sunny.jpg');
+}
+.bg-mostly_sunny,
+.bg-mostly_clear-night {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/mostly_sunny.jpg');
+}
+.bg-partly_cloudy,
+.bg-partly_cloudy-night {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/partly_cloudy.jpg');
+}
+.bg-cloudy {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/cloudy.jpg');
+}
+.bg-fog {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/fog.jpg');
+}
+.bg-drizzle {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/drizzle.jpg');
+}
+.bg-freezing_drizzle {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/freezing_drizzle.jpg');
+}
+.bg-rain {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/rain.jpg');
+}
+.bg-freezing_rain {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/freezing_rain.jpg');
+}
+.bg-showers {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/showers.jpg');
+}
+.bg-snow {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/snow.jpg');
+}
+.bg-snow_showers {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/snow_showers.jpg');
+}
+.bg-thunderstorm {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/thunderstorm.jpg');
+}
+.bg-thunderstorm_hail {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url('../backgrounds/thunderstorm_hail.jpg');
+}
+.bg-unknown {
+    background: #1a2a3a;
+}
+
+/* ============================================================
+   Night filter — darker overlay + desaturate + blue shift.
+   Matches all night condition class names (contain _night).
+   ============================================================ */
+
+
+/* ============================================================
+   Portrait overrides — swap to portrait-optimized images
+   ============================================================ */
+@media (orientation: portrait) {
+    .bg-sunny,
+    .bg-clear-night {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/sunny-portrait.jpg');
+    }
+    .bg-mostly_sunny,
+    .bg-mostly_clear-night {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/mostly_sunny-portrait.jpg');
+    }
+    .bg-partly_cloudy,
+    .bg-partly_cloudy-night {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/partly_cloudy-portrait.jpg');
+    }
+    .bg-cloudy {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/cloudy-portrait.jpg');
+    }
+    .bg-fog {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/fog-portrait.jpg');
+    }
+    .bg-drizzle {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/drizzle-portrait.jpg');
+    }
+    .bg-freezing_drizzle {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/freezing_drizzle-portrait.jpg');
+    }
+    .bg-rain {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/rain-portrait.jpg');
+    }
+    .bg-freezing_rain {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/freezing_rain-portrait.jpg');
+    }
+    .bg-showers {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/showers-portrait.jpg');
+    }
+    .bg-snow {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/snow-portrait.jpg');
+    }
+    .bg-snow_showers {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/snow_showers-portrait.jpg');
+    }
+    .bg-thunderstorm {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/thunderstorm-portrait.jpg');
+    }
+    .bg-thunderstorm_hail {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url('../backgrounds/thunderstorm_hail-portrait.jpg');
+    }
+}
+
+/* ============================================================
+   Loading & Error States
+   ============================================================ */
+.state-loading,
+.state-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 560px;
+    font-size: 1rem;
+    color: var(--clr-text-muted);
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    background: linear-gradient(160deg, #1a2a3a 0%, #0d1520 100%);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    text-align: center;
+}
+
+.state-error {
+    color: #ff6b6b;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.location {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+}
+
+.btn-refresh {
+    background: var(--clr-glass);
+    border: 1px solid var(--clr-glass-border);
+    color: var(--clr-text-muted);
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.btn-refresh:hover {
+    background: rgba(255,255,255,0.2);
+    color: var(--clr-text);
+    transform: rotate(90deg);
+}
+
+/* ============================================================
+   Current Weather
+   ============================================================ */
+.widget-current {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1.5rem 1.5rem;
+    gap: 0.25rem;
+}
+
+.weather-icon img {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+}
+
+.temperature {
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.6);
+}
+
+.temperature .unit {
+    font-size: 2rem;
+    font-weight: 200;
+    vertical-align: top;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.condition-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+
+/* ============================================================
+   Details
+   ============================================================ */
+.widget-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+}
+
+.detail-item {
+    background: var(--clr-glass);
+    border: 1px solid var(--clr-glass-border);
+    border-radius: var(--radius-inner);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+.detail-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+}
+
+.detail-value {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    color: var(--clr-text);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+}
+
+/* ============================================================
+   Forecast
+   ============================================================ */
+.widget-forecast {
+    padding: 0 1rem 1rem;
+}
+
+.forecast-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text-dim);
+    padding: 0 0.25rem 0.5rem;
+}
+
+.forecast-days {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.forecast-day {
+    background: var(--clr-glass);
+    border: 1px solid var(--clr-glass-border);
+    border-radius: var(--radius-inner);
+    padding: 0.75rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s;
+}
+
+.forecast-day:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.forecast-weekday {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+}
+
+.forecast-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.forecast-temps {
+    display: flex;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.temp-max {
+    font-weight: 600;
+    color: var(--clr-text);
+}
+
+.temp-min {
+    font-weight: 400;
+    color: var(--clr-text-dim);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.widget-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem 1.25rem;
+    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    color: var(--clr-text-dim);
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--clr-glass-border);
+}
+
+.provider {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   Responsive: Portrait Fullscreen
+   ============================================================ */
+@media (max-width: 400px) {
+    .temperature {
+        font-size: 6rem;
+    }
+
+    .weather-icon img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* ============================================================
+   Responsive: Landscape 16:9
+   ============================================================ */
+@media (min-width: 700px) and (orientation: landscape) {
+    body {
+        padding: 0;
+    }
+
+    .widget {
+        width: 100vw;
+        max-width: 100vw;
+        min-height: 100vh;
+        border-radius: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .widget-header {
+        width: 100%;
+        padding: 2rem 3rem 0;
+    }
+
+    .widget-current {
+        width: 50%;
+        padding: 2rem 2rem 2rem 3rem;
+        align-items: flex-start;
+    }
+
+    .temperature {
+        font-size: 7rem;
+    }
+
+    .weather-icon img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .widget-details {
+        width: 50%;
+        padding: 2rem 3rem 2rem 2rem;
+        grid-template-columns: 1fr;
+        align-content: center;
+    }
+
+    .detail-item {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .widget-forecast {
+        width: 100%;
+        padding: 0 3rem 1.5rem;
+    }
+
+    .forecast-days {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+    }
+
+    .widget-footer {
+        width: 100%;
+        padding: 0.75rem 3rem 2rem;
+    }
+}
+
+/* ============================================================
+   Responsive: Fullscreen Digital Signage 1920×1080
+   ============================================================ */
+@media (min-width: 1280px) {
+    .temperature {
+        font-size: 10rem;
+    }
+
+    .weather-icon img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .location {
+        font-size: 1.4rem;
+    }
+
+    .condition-text {
+        font-size: 1.1rem;
+    }
+
+    .detail-value {
+        font-size: 1.3rem;
+    }
+
+    .forecast-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .forecast-temps {
+        font-size: 1.1rem;
+    }
+}

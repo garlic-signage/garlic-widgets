@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0"
+        id="com.example.weather"
+        version="1.0.0"
+        width="1920"
+        height="1080">
+
+    <name>Weather</name>
+    <description>A Digital Signage Widget</description>
+    <author>Niko Sagiadinos</author>
+
+    <content src="index.html"/>
+    <icon src="icon.png"/>
+
+    <!-- Parameters passed from the Digital Signage CMS -->
+    <preference name="backgroundColor" value="#000000" readonly="false"/>
+    <preference name="textColor"       value="#ffffff" readonly="false"/>
+    <preference name="message"         value="Hello World" readonly="false"/>
+
+</widget>
