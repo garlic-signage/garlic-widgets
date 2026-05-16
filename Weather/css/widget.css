@@ -2,8 +2,8 @@
    CSS Custom Properties
    ============================================================ */
 :root {
-    --font-main:   'Outfit', sans-serif;
-    --font-mono:   'JetBrains Mono', monospace;
+    --font-main:   "Outfit", sans-serif;
+    --font-mono:   "JetBrains Mono", monospace;
 
     --clr-text:         #ffffff;
     --clr-text-muted:   rgba(255,255,255,0.80);
@@ -68,7 +68,7 @@ body {
 
 /* Glass overlay via pseudo-element */
 .widget::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
@@ -92,59 +92,67 @@ body {
 
 .bg-sunny {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/sunny.jpg');
+    url("../backgrounds/sunny.jpg");
+}
+.bg-clear_night {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url("../backgrounds/clear_night.jpg");
 }
 .bg-mostly_sunny {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/mostly_sunny.jpg');
+    url("../backgrounds/mostly_sunny.jpg");
+}
+.bg-mostly_clear_night {
+    background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+    url("../backgrounds/mostly_clear_night.jpg");
 }
 .bg-partly_cloudy {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/partly_cloudy.jpg');
+    url("../backgrounds/partly_cloudy.jpg");
 }
 .bg-cloudy {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/cloudy.jpg');
+    url("../backgrounds/cloudy.jpg");
 }
 .bg-fog {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/fog.jpg');
+    url("../backgrounds/fog.jpg");
 }
 .bg-drizzle {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/drizzle.jpg');
+    url("../backgrounds/drizzle.jpg");
 }
 .bg-freezing_drizzle {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/freezing_drizzle.jpg');
+    url("../backgrounds/freezing_drizzle.jpg");
 }
 .bg-rain {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/rain.jpg');
+    url("../backgrounds/rain.jpg");
 }
 .bg-freezing_rain {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/freezing_rain.jpg');
+    url("../backgrounds/freezing_rain.jpg");
 }
 .bg-showers {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/showers.jpg');
+    url("../backgrounds/showers.jpg");
 }
 .bg-snow {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/snow.jpg');
+    url("../backgrounds/snow.jpg");
 }
 .bg-snow_showers {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/snow_showers.jpg');
+    url("../backgrounds/snow_showers.jpg");
 }
 .bg-thunderstorm {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/thunderstorm.jpg');
+    url("../backgrounds/thunderstorm.jpg");
 }
 .bg-thunderstorm_hail {
     background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-    url('../backgrounds/thunderstorm_hail.jpg');
+    url("../backgrounds/thunderstorm_hail.jpg");
 }
 .bg-unknown {
     background: #1a2a3a;
@@ -168,59 +176,67 @@ body {
 @media (orientation: portrait) {
     .bg-sunny {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/sunny-portrait.jpg');
+        url("../backgrounds/sunny-portrait.jpg");
+    }
+    .bg-clear_night {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url("../backgrounds/clear_night-portrait.jpg");
     }
     .bg-mostly_sunny {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/mostly_sunny-portrait.jpg');
+        url("../backgrounds/mostly_sunny-portrait.jpg");
+    }
+    .bg-mostly_clear_night {
+        background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
+        url("../backgrounds/mostly_clear_night-portrait.jpg");
     }
     .bg-partly_cloudy {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/partly_cloudy-portrait.jpg');
+        url("../backgrounds/partly_cloudy-portrait.jpg");
     }
     .bg-cloudy {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/cloudy-portrait.jpg');
+        url("../backgrounds/cloudy-portrait.jpg");
     }
     .bg-fog {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/fog-portrait.jpg');
+        url("../backgrounds/fog-portrait.jpg");
     }
     .bg-drizzle {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/drizzle-portrait.jpg');
+        url("../backgrounds/drizzle-portrait.jpg");
     }
     .bg-freezing_drizzle {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/freezing_drizzle-portrait.jpg');
+        url("../backgrounds/freezing_drizzle-portrait.jpg");
     }
     .bg-rain {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/rain-portrait.jpg');
+        url("../backgrounds/rain-portrait.jpg");
     }
     .bg-freezing_rain {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/freezing_rain-portrait.jpg');
+        url("../backgrounds/freezing_rain-portrait.jpg");
     }
     .bg-showers {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/showers-portrait.jpg');
+        url("../backgrounds/showers-portrait.jpg");
     }
     .bg-snow {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/snow-portrait.jpg');
+        url("../backgrounds/snow-portrait.jpg");
     }
     .bg-snow_showers {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/snow_showers-portrait.jpg');
+        url("../backgrounds/snow_showers-portrait.jpg");
     }
     .bg-thunderstorm {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/thunderstorm-portrait.jpg');
+        url("../backgrounds/thunderstorm-portrait.jpg");
     }
     .bg-thunderstorm_hail {
         background-image: linear-gradient(var(--overlay-day), var(--overlay-day)),
-        url('../backgrounds/thunderstorm_hail-portrait.jpg');
+        url("../backgrounds/thunderstorm_hail-portrait.jpg");
     }
 }
 
