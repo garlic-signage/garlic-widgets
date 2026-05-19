@@ -32,7 +32,7 @@ const config = {
 };
 
 if (!config.lat && !config.lon && !config.city)
-    config.city = 'Jakarta';
+    config.city = 'Hannover';
 
 const langMap = {
 	de: 'de', en: 'en', es: 'es', fr: 'fr', el: 'el', ru: 'ru',
