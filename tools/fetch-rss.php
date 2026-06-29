@@ -34,16 +34,12 @@ else
 	ini_set('display_errors', false);
 	error_reporting(0);
 }
-/*
+
 if (empty(_http_host))
-{
 	die('set a http host');
-}
 if ($_SERVER['HTTP_HOST'] != _http_host)
-{
 	die('not correct http host');
-}
-*/
+
 $feed_url = $_GET['feed_url'] ?? '';
 $feed_url = urldecode($feed_url);
 
