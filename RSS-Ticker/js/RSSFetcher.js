@@ -7,9 +7,9 @@
  */
 export class RSSFetcher
 {
-	constructor(baseUrl = 'https://smil-control.com/samples/fetch-rss.php?feed_url=')
+	constructor(baseUrl)
 	{
-		this.baseUrl = baseUrl;
+		this.baseUrl = baseUrl + "?feed_url=";
 	}
 
 	fetch(feedUrl)
