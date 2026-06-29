@@ -1,13 +1,13 @@
 /**
  * Renderer
- * Writes normalized weather data to the DOM.
+ * Writes normalized weather data to the DOM using HTML templates.
  * No styling here — structure and data only.
  */
 export class Renderer
 {
-
 	#i18n;
 	#root;
+	#templates;
 
 	/**
 	 * Mapping from normalized condition keys to Meteocons production/fill/all filenames.
@@ -41,16 +41,26 @@ export class Renderer
 	{
 		this.#i18n = i18n;
 		this.#root = document.getElementById('widget');
+		this.#templates = {
+			widget:      document.getElementById('tpl-widget'),
+			forecastDay: document.getElementById('tpl-forecast-day'),
+			loading:     document.getElementById('tpl-loading'),
+			error:       document.getElementById('tpl-error'),
+		};
 	}
 
 	showLoading()
 	{
-		this.#root.innerHTML = `<div class="state-loading">${this.#i18n.t('loading')}</div>`;
+		const tpl = this.#cloneTemplate('loading');
+		this.#applyBindings(tpl, { message: this.#i18n.t('loading') });
+		this.#replaceContent(tpl);
 	}
 
 	showError(msg)
 	{
-		this.#root.innerHTML = `<div class="state-error">${msg}</div>`;
+		const tpl = this.#cloneTemplate('error');
+		this.#applyBindings(tpl, { message: msg });
+		this.#replaceContent(tpl);
 	}
 
 	/**
@@ -59,16 +69,133 @@ export class Renderer
 	render(data)
 	{
 		const condition = data.condition ?? 'unknown';
-		const bgClass = `bg-${condition}${!data.is_day && !condition.includes('night') ? ' night' : ''}`;
+		const bgClass   = `bg-${condition}${!data.is_day && !condition.includes('night') ? ' night' : ''}`;
+		const windDir   = this.#degreesToCardinal(data.wind_direction);
+
+		const tpl = this.#cloneTemplate('widget');
+
+		const bindings = {
+			location:       data.location,
+			refresh:        this.#i18n.t('refresh'),
+			iconSrc:        `icons/${this.#iconFile(data.condition, data.is_day)}.svg`,
+			conditionText:  this.#i18n.t(`condition_${data.condition}`),
+			temperature:    Math.round(data.temperature),
+			unitCelsius:    this.#i18n.t('unit_celsius'),
+			feelsLikeLabel: this.#i18n.t('feels_like'),
+			feelsLikeValue: `${Math.round(data.feels_like)}${this.#i18n.t('unit_celsius')}`,
+			humidityLabel:  this.#i18n.t('humidity'),
+			humidityValue:  `${data.humidity}${this.#i18n.t('unit_percent')}`,
+			windLabel:      this.#i18n.t('wind'),
+			windValue:      `${Math.round(data.wind_speed)} ${this.#i18n.t('unit_kmh')}${windDir ? ` ${windDir}` : ''}`,
+			forecastLabel:  this.#i18n.t('forecast'),
+			lastUpdated:    this.#i18n.t('last_updated', { time: this.#formatTime(data.timestamp) }),
+			provider:       data.provider,
+			noForecast:     !data.forecast || data.forecast.length === 0,
+		};
+
+		this.#applyBindings(tpl, bindings);
+		this.#renderForecastSlot(tpl, data.forecast);
 
 		this.#root.className = `widget ${bgClass}`;
-		this.#root.innerHTML = `
-		${this.#renderHeader(data)}
-		${this.#renderCurrent(data)}
-		${this.#renderDetails(data)}
-		${this.#renderForecast(data.forecast)}
-		${this.#renderFooter(data)}
-	`;
+		this.#replaceContent(tpl);
+	}
+
+	/**
+	 * Clone a template by key.
+	 * @param {string} key
+	 * @returns {DocumentFragment}
+	 */
+	#cloneTemplate(key)
+	{
+		return this.#templates[key].content.cloneNode(true);
+	}
+
+	/**
+	 * Replace widget content with a DocumentFragment.
+	 * @param {DocumentFragment} fragment
+	 */
+	#replaceContent(fragment)
+	{
+		this.#root.innerHTML = '';
+		this.#root.appendChild(fragment);
+	}
+
+	/**
+	 * Apply data bindings to a template fragment.
+	 * Supports: data-bind (textContent), data-bind-src, data-bind-alt,
+	 *           data-bind-title, data-bind-hidden
+	 * @param {DocumentFragment|Element} root
+	 * @param {Object<string, any>} bindings
+	 */
+	#applyBindings(root, bindings)
+	{
+		for (const [key, value] of Object.entries(bindings))
+		{
+			// textContent binding
+			root.querySelectorAll(`[data-bind="${key}"]`).forEach(el => {
+				el.textContent = value;
+			});
+
+			// Attribute bindings
+			root.querySelectorAll(`[data-bind-src="${key}"]`).forEach(el => {
+				el.setAttribute('src', value);
+			});
+
+			root.querySelectorAll(`[data-bind-alt="${key}"]`).forEach(el => {
+				el.setAttribute('alt', value);
+			});
+
+			root.querySelectorAll(`[data-bind-title="${key}"]`).forEach(el => {
+				el.setAttribute('title', value);
+			});
+
+			// Hidden binding (boolean)
+			root.querySelectorAll(`[data-bind-hidden="${key}"]`).forEach(el => {
+				el.hidden = !!value;
+			});
+		}
+	}
+
+	/**
+	 * Render forecast days into the forecast slot.
+	 * @param {DocumentFragment} root
+	 * @param {Array} forecast
+	 */
+	#renderForecastSlot(root, forecast)
+	{
+		const slot = root.querySelector('[data-slot="forecast"]');
+		if (!slot || !forecast || forecast.length === 0)
+		{
+			return;
+		}
+
+		forecast.slice(0, 3).forEach(day => {
+			const dayFragment = this.#cloneTemplate('forecastDay');
+			const date = new Date(day.date);
+
+			this.#applyBindings(dayFragment, {
+				dayName:       this.#i18n.t(`day_${date.getDay()}`),
+				iconSrc:       `icons/${this.#iconFile(day.condition, true)}.svg`,
+				conditionText: this.#i18n.t(`condition_${day.condition}`),
+				tempMax:       `${Math.round(day.temp_max)}°`,
+				tempMin:       `${Math.round(day.temp_min)}°`,
+			});
+
+			slot.appendChild(dayFragment);
+		});
+	}
+
+	/**
+	 * Format timestamp to localized time string.
+	 * @param {number|string} timestamp
+	 * @returns {string}
+	 */
+	#formatTime(timestamp)
+	{
+		return new Date(timestamp).toLocaleTimeString(this.#i18n.lang, {
+			hour: '2-digit',
+			minute: '2-digit'
+		});
 	}
 
 	/**
@@ -84,98 +211,11 @@ export class Renderer
 		{
 			const nightKey = condition.endsWith('_night') ? condition : `${condition}_night`;
 			if (Renderer.#ICON_MAP[nightKey])
+			{
 				return Renderer.#ICON_MAP[nightKey];
+			}
 		}
 		return Renderer.#ICON_MAP[condition] ?? Renderer.#ICON_MAP['unknown'];
-	}
-
-	#renderHeader(data)
-	{
-		return `
-        <header class="widget-header">
-            <span class="location">${this.#esc(data.location)}</span>
-            <button id="btn-refresh" class="btn-refresh" title="${this.#i18n.t('refresh')}">↻</button>
-        </header>`;
-	}
-
-	#renderCurrent(data)
-	{
-		const condKey  = `condition_${data.condition}`;
-		const iconFile = this.#iconFile(data.condition, data.is_day);
-		return `
-        <section class="widget-current">
-            <div class="weather-icon">
-                <img src="icons/${iconFile}.svg"
-                     alt="${this.#i18n.t(condKey)}"
-                     onerror="this.src='icons/not-available.svg'">
-            </div>
-            <div class="temperature">
-                ${Math.round(data.temperature)}<span class="unit">${this.#i18n.t('unit_celsius')}</span>
-            </div>
-            <div class="condition-text">${this.#i18n.t(condKey)}</div>
-        </section>`;
-	}
-
-	#renderDetails(data)
-	{
-		const windDir = this.#degreesToCardinal(data.wind_direction);
-		return `
-        <section class="widget-details">
-            <div class="detail-item">
-                <span class="detail-label">${this.#i18n.t('feels_like')}</span>
-                <span class="detail-value">${Math.round(data.feels_like)}${this.#i18n.t('unit_celsius')}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">${this.#i18n.t('humidity')}</span>
-                <span class="detail-value">${data.humidity}${this.#i18n.t('unit_percent')}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">${this.#i18n.t('wind')}</span>
-                <span class="detail-value">${Math.round(data.wind_speed)} ${this.#i18n.t('unit_kmh')}${windDir ? ` ${windDir}` : ''}</span>
-            </div>
-        </section>`;
-	}
-
-	#renderForecast(forecast)
-	{
-		if (!forecast || forecast.length === 0) return '';
-
-		const days = forecast.slice(0, 3).map(day => {
-			const date     = new Date(day.date);
-			const dayName  = this.#i18n.t(`day_${date.getDay()}`);
-			const condKey  = `condition_${day.condition}`;
-			const iconFile = this.#iconFile(day.condition, true); // forecast always uses day icons
-			return `
-            <div class="forecast-day">
-                <span class="forecast-weekday">${dayName}</span>
-                <img class="forecast-icon"
-                     src="icons/${iconFile}.svg"
-                     alt="${this.#i18n.t(condKey)}"
-                     onerror="this.src='icons/not-available.svg'">
-                <span class="forecast-temps">
-                    <span class="temp-max">${Math.round(day.temp_max)}°</span>
-                    <span class="temp-min">${Math.round(day.temp_min)}°</span>
-                </span>
-            </div>`;
-		}).join('');
-
-		return `
-        <section class="widget-forecast">
-            <div class="forecast-label">${this.#i18n.t('forecast')}</div>
-            <div class="forecast-days">${days}</div>
-        </section>`;
-	}
-
-	#renderFooter(data)
-	{
-		const time = new Date(data.timestamp).toLocaleTimeString(this.#i18n.lang, {
-			hour: '2-digit', minute: '2-digit'
-		});
-		return `
-        <footer class="widget-footer">
-            <span>${this.#i18n.t('last_updated', { time })}</span>
-            <span class="provider">${data.provider}</span>
-        </footer>`;
 	}
 
 	/**
@@ -185,22 +225,12 @@ export class Renderer
 	 */
 	#degreesToCardinal(deg)
 	{
-		if (deg === null || deg === undefined) return '';
-		const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+		if (deg === null || deg === undefined)
+		{
+			return '';
+		}
+		const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 		const key  = dirs[Math.round(deg / 45) % 8];
 		return this.#i18n.t(`wind_${key}`);
-	}
-
-	/**
-	 * Escape HTML special characters.
-	 * @param {string} str
-	 * @returns {string}
-	 */
-	#esc(str)
-	{
-		return String(str)
-			.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;');
 	}
 }
