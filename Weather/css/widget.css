@@ -59,6 +59,7 @@ body {
     color: var(--clr-text);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -469,7 +470,6 @@ body {
    Footer
    ============================================================ */
 .widget-footer {
-    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -515,7 +515,8 @@ body {
         border-radius: 0;
         flex-direction: row;
         flex-wrap: wrap;
-        align-content: flex-start;
+        align-content: center;
+        justify-content: center;
     }
 
     .widget-header {
