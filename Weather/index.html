@@ -4,9 +4,6 @@
 	    <meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <title>Weather</title>
-	    <link rel="preconnect" href="https://fonts.googleapis.com">
-	    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 	    <link rel="stylesheet" href="css/widget.css">
 	</head>
 	<body>
@@ -25,8 +22,9 @@
 	            <div class="weather-icon">
 	                <img data-bind-src="iconSrc"
 	                     data-bind-alt="conditionText"
-	                     alt="weaather icon">
-	                     onerror="this.src='icons/not-available.svg'">
+	                     alt="weaather icon"
+	                     src="icons/not-available.svg">
+
 	            </div>
 	            <div class="temperature">
 	                <span data-bind="temperature"></span><span class="unit" data-bind="unitCelsius"></span>
@@ -67,8 +65,8 @@
 	            <img class="forecast-icon"
 	                 data-bind-src="iconSrc"
 	                 data-bind-alt="conditionText"
-	                 alt="forecast icon">
-	                 onerror="this.src='icons/not-available.svg'">
+	                 alt="forecast icon"
+	            src="icons/not-available.svg">
 	            <span class="forecast-temps">
 	                <span class="temp-max" data-bind="tempMax"></span>
 	                <span class="temp-min" data-bind="tempMin"></span>
