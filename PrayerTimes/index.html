@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prayer Times</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div id="app"></div>
-  <div id="status"></div>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Prayer Times</title>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+	  <div id="app"></div>
+	  <div id="status"></div>
 
 
-  <template id="tpl-error">
-    <div class="fatal" data-bind="message"></div>
-  </template>
+	  <template id="tpl-error">
+	    <div class="fatal" data-bind="message"></div>
+	  </template>
 
-  <template id="tpl-header">
-    <header>
-      <div class="loc" data-bind="location"></div>
-      <div class="clock" id="clock" data-bind="clock"></div>
-      <div class="dates">
-        <div class="hijri" data-bind="hijri"></div>
-        <div class="greg" data-bind="greg"></div>
-      </div>
-    </header>
-  </template>
+	  <template id="tpl-header">
+	    <header>
+	      <div class="loc" data-bind="location"></div>
+	      <div class="clock" id="clock" data-bind="clock"></div>
+	      <div class="dates">
+	        <div class="hijri" data-bind="hijri"></div>
+	        <div class="greg" data-bind="greg"></div>
+	      </div>
+	    </header>
+	  </template>
 
-	<template id="tpl-hero">
-	  <div class="hero">
-	    <div class="hero-label"><span data-bind="nextPrefix"></span> · <span data-bind="nextLabel"></span></div>
-	    <div class="hero-time" data-bind="nextTime"></div>
-	    <div class="hero-count" id="countdown" data-bind="countdown"></div>
-	  </div>
-	</template>
+		<template id="tpl-hero">
+		  <div class="hero">
+		    <div class="hero-label"><span data-bind="nextPrefix"></span> · <span data-bind="nextLabel"></span></div>
+		    <div class="hero-time" data-bind="nextTime"></div>
+		    <div class="hero-count" id="countdown" data-bind="countdown"></div>
+		  </div>
+		</template>
 
-  <template id="tpl-cell">
-    <div class="cell">
-      <div class="cell-name" data-bind="name"></div>
-      <div class="cell-time" data-bind="time"></div>
-    </div>
-  </template>
+	  <template id="tpl-cell">
+	    <div class="cell">
+	      <div class="cell-name" data-bind="name"></div>
+	      <div class="cell-time" data-bind="time"></div>
+	    </div>
+	  </template>
 
-  <template id="tpl-banner">
-    <div class="wrap banner">
-      <div class="marquee" id="marquee" data-slot="items"></div>
-    </div>
-  </template>
+	  <template id="tpl-banner">
+	    <div class="wrap banner">
+	      <div class="marquee" id="marquee" data-slot="items"></div>
+	    </div>
+	  </template>
 
-  <template id="tpl-banner-item">
-    <span class="item">
-      <span class="nm" data-bind="name"></span>
-      <span class="tm" data-bind="time"></span>
-    </span>
-  </template>
+	  <template id="tpl-banner-item">
+	    <span class="item">
+	      <span class="nm" data-bind="name"></span>
+	      <span class="tm" data-bind="time"></span>
+	    </span>
+	  </template>
 
-  <template id="tpl-portrait">
-    <div class="wrap portrait">
-      <div data-slot="header"></div>
-      <div data-slot="hero"></div>
-      <div class="list" data-slot="cells"></div>
-    </div>
-  </template>
+	  <template id="tpl-portrait">
+	    <div class="wrap portrait">
+	      <div data-slot="header"></div>
+	      <div data-slot="hero"></div>
+	      <div class="list" data-slot="cells"></div>
+	    </div>
+	  </template>
 
-  <template id="tpl-landscape">
-    <div class="wrap landscape">
-      <div data-slot="header"></div>
-      <div data-slot="hero"></div>
-      <div class="row" data-slot="cells"></div>
-    </div>
-  </template>
+	  <template id="tpl-landscape">
+	    <div class="wrap landscape">
+	      <div data-slot="header"></div>
+	      <div data-slot="hero"></div>
+	      <div class="row" data-slot="cells"></div>
+	    </div>
+	  </template>
 
-  <template id="tpl-square">
-    <div class="wrap square">
-      <div data-slot="hero"></div>
-    </div>
-  </template>
+	  <template id="tpl-square">
+	    <div class="wrap square">
+	      <div data-slot="hero"></div>
+	    </div>
+	  </template>
+		<footer>PoweredBy by <a href="https://garlic-signage.com">GarlicSignage</a></footer>
 
-<script type="module" src="js/init.js"></script>
-</body>
+		<script type="module" src="js/init.js"></script>
+	</body>
 </html>

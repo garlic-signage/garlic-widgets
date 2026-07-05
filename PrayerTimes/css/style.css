@@ -121,3 +121,12 @@ header .greg  { font-size: clamp(11px, 1.9vmin, 24px); color: #6E8E83; }
 [dir="rtl"] .marquee {
     animation-direction: reverse;
 }
+
+footer{
+    color: var(--accent);
+    position: absolute;
+    bottom: 2vmin;
+    left: 50%;
+    transform: translateX(-50%);
+}
+footer a {color: var(--accent); text-decoration: none;}
