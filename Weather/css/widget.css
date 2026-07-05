@@ -621,3 +621,11 @@ body {
         font-size: 1.1rem;
     }
 }
+footer{
+    color: var(--clr-text);
+    position: absolute;
+    bottom: 2vmin;
+    left: 50%;
+    transform: translateX(-50%);
+}
+footer a {color: var(--clr-text); text-decoration: none; font-weight: bold;}
