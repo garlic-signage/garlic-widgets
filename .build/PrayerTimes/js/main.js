@@ -3,7 +3,6 @@
   var PrayerConfig = class {
     constructor() {
       this.latitude = this.param("latitude", "");
-      0;
       this.longitude = this.param("longitude", "");
       this.city = this.param("city", "Hanover");
       this.country = this.param("country", "Germany");

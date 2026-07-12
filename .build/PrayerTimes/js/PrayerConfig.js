@@ -2,7 +2,7 @@ export class PrayerConfig
 {
 	constructor()
 	{
-		this.latitude = this.param("latitude", "");0
+		this.latitude = this.param("latitude", "");
 		this.longitude = this.param("longitude", "");
 		this.city = this.param("city", "Hanover");
 		this.country = this.param("country", "Germany");
