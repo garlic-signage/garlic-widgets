@@ -11,7 +11,7 @@ $(DIST_DIR):
 	mkdir -p $(DIST_DIR)
 
 $(DIST_DIR)/%.wgt: %/config.xml
-	cd $* && zip -j ../$(DIST_DIR)/$*.wgt *
+	cd $* && zip -r ../$(DIST_DIR)/$*.wgt . -x '.*'
 	@echo "Built: $(DIST_DIR)/$*.wgt"
 
 clean:
