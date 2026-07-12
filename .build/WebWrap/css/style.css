@@ -1,0 +1,63 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Idle overlay - shown when countdown is active */
+#idle-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-family: sans-serif;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+#idle-overlay.visible {
+    display: flex;
+}
+
+#idle-countdown {
+    font-size: 5vw;
+    font-weight: bold;
+    line-height: 1;
+}
+
+#idle-message {
+    margin-top: 1vw;
+    font-size: 2vw;
+    opacity: 0.8;
+}
+
+#idle-bar-wrap {
+    margin-top: 2vw;
+    width: 40vw;
+    height: 0.5vw;
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#idle-bar {
+    height: 100%;
+    background: #fff;
+    width: 100%;
+    transition: width 1s linear;
+}
