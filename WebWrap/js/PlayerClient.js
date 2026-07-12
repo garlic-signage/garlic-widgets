@@ -1,11 +1,18 @@
-class PlayerClient {
-    constructor(config) {
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 sagiadinos
+'use strict';
+
+export class PlayerClient
+{
+    constructor(config)
+	{
         this.config = config;
         this.cachedToken = null;
         this.tokenExpiry = 0;
     }
 
-    async getToken() {
+    async getToken()
+	{
         if (this.cachedToken && Date.now() < this.tokenExpiry) {
             return this.cachedToken;
         }
@@ -29,7 +36,8 @@ class PlayerClient {
         return this.cachedToken;
     }
 
-    async resumePlaylist() {
+    async resumePlaylist()
+	{
         try {
             const token = await this.getToken();
             const res = await fetch(`${this.config.playerBase}/v2/app/switch?access_token=${token}`, {
@@ -37,10 +45,12 @@ class PlayerClient {
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: JSON.stringify({ mode: 'start' })
             });
-            if (!res.ok) {
+            if (!res.ok)
                 console.warn('[GarlicFrame] switch failed:', res.status);
-            }
-        } catch (e) {
+
+        }
+		catch (e)
+		{
             console.error('[GarlicFrame] resumePlaylist error:', e);
         }
     }

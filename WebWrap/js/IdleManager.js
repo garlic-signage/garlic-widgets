@@ -1,4 +1,8 @@
-class IdleManager
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 sagiadinos
+'use strict';
+
+export class IdleManager
 {
     constructor(config, overlayUI, onTimeout)
 	{
