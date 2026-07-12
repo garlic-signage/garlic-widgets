@@ -21,8 +21,8 @@ export class TickerApp
 	init()
 	{
 		// Konfiguration aus URL-Parametern
-		const url      = this.getUrlParam("url", "https://smil-control.com/feed.rss");
-		const color    = this.getUrlParam("color", "yellow");
+		const url      = this.getUrlParam("url", "https://www.phoronix.com/rss.php");
+		const color    = this.getUrlParam("color", "black");
 		const fontSize = this.getUrlParam("font_size", "30");
 		const bgColor  = this.getUrlParam("bgcolor", "transparent");
 
