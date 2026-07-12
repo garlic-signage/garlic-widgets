@@ -86,8 +86,8 @@
 	const params  = new URLSearchParams(window.location.search);
 
 	const cfg = {
-		url:          params.get('url')          || 'about:blank',
-		idleTimeout:  Number(params.get('idle_timeout'))  || 60,  // seconds
+		url:          params.get('url')          || 'https://en.wikipedia.org/wiki/Digital_signage',
+		idleTimeout:  Number(params.get('idle_timeout'))  || 20,  // seconds
 		warnAt:       Number(params.get('warn_at'))       || 10,  // seconds before timeout show overlay
 		playerHost:   params.get('player_host')  || 'localhost',
 		playerPort:   Number(params.get('player_port')) || 8080,

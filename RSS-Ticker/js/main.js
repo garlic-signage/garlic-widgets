@@ -10,7 +10,7 @@ import {RSSFetcher} from "./RSSFetcher.js";
 document.addEventListener('DOMContentLoaded', () => {
 
 	// enter the path to the fetch-rss.php from tools Dir
-	const pathToFetcherScript = 'https://webdev.smil-control.com/scripts/fetch-rss.php';
+	const pathToFetcherScript = 'https://YOUR_PATH_TO/fetch-rss.php';
 	const tickerView      = new TickerView();
 	const tickerFormatter = new TickerFormatter(tickerView);
 
