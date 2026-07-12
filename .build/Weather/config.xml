@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0"
+        id="com.example.weather"
+        version="1.0.0"
+        width="1920"
+        height="1080">
+
+    <name>Weather</name>
+    <description>
+        A responsive Digital Signage weather widget with animated icons, background images and a 3-day forecast.
+        Supports multiple weather API providers via a normalized adapter layer.
+    </description>
+    <version>1.0.0.0</version>
+    <author>Niko Sagiadinos</author>
+
+    <content src="index.html"/>
+    <icon src="icon.png"/>
+
+    <!-- Parameters passed from the Digital Signage CMS -->
+    <preference name="provider" ia:types="combo" ia:mandatory="true" ia:default="open-meteo" ia:label="Weather Provider" ia:tooltip="Select a provider. OpenWeatherMap and WeatherApi need an ApiKey">
+        <ia:options>open-meteo</ia:options>
+        <ia:options>openweathermap</ia:options>
+        <ia:options>weatherapi</ia:options>
+    </preference>
+    <preference name="apikey" ia:types="text" ia:label="API Key" ia:tooltip="Required for OpenWeatherMap and WeatherApi" />
+    <preference name="lang" ia:types="combo" ia:mandatory="true" ia:default="en">
+        <ia:options value="en">English</ia:options>
+        <ia:options value="de">German</ia:options>
+        <ia:options value="es">Spanish</ia:options>
+        <ia:options value="fr">French</ia:options>
+        <ia:options value="el">Greek</ia:options>
+        <ia:options value="ru">Russian</ia:options>
+    </preference>
+    <preference name="lat" ia:types="text" ia:label="Latitude" ia:tooltip="Enter a latitude." />
+    <preference name="lon" ia:types="text" ia:label="Longitude" ia:tooltip="Enter a longitude." />
+
+
+</widget>

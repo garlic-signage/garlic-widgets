@@ -1,0 +1,97 @@
+<svg width="680" height="680" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <title>Weather Icon</title>
+    <rect fill="#b87a20" height="680" id="svg_1" width="680"/>
+    <g class="layer">
+        <g id="clouds">
+            <!-- Cloud 1 - left, larger -->
+            <g opacity="0.82">
+                <ellipse cx="110" cy="95" fill="#c98e38" rx="55" ry="32"/>
+                <ellipse cx="155" cy="88" fill="#c98e38" rx="45" ry="28"/>
+                <ellipse cx="65"  cy="100" fill="#c98e38" rx="35" ry="22"/>
+                <ellipse cx="190" cy="100" fill="#c98e38" rx="38" ry="24"/>
+                <rect fill="#c98e38" height="28" width="140" x="55" y="100"/>
+            </g>
+
+            <!-- Cloud 2 - right, medium -->
+            <g opacity="0.72">
+                <ellipse cx="490" cy="55" fill="#c08030" rx="50" ry="28"/>
+                <ellipse cx="535" cy="48" fill="#c08030" rx="40" ry="24"/>
+                <ellipse cx="448" cy="60" fill="#c08030" rx="32" ry="20"/>
+                <ellipse cx="568" cy="60" fill="#c08030" rx="32" ry="20"/>
+                <rect fill="#c08030" height="24" width="130" x="443" y="60"/>
+            </g>
+
+            <!-- Cloud 3 - center, wispy -->
+            <g opacity="0.55">
+                <ellipse cx="330" cy="38" fill="#d4a040" rx="60" ry="22"/>
+                <ellipse cx="375" cy="32" fill="#d4a040" rx="42" ry="18"/>
+                <ellipse cx="288" cy="42" fill="#d4a040" rx="34" ry="16"/>
+                <rect fill="#d4a040" height="18" width="130" x="285" y="42"/>
+            </g>
+        </g>
+
+        <g id="GarlicLogo" transform="matrix(0.734694 0 0 0.734694 554.735 20.735)">
+            <rect fill="#ffffff" height="120" id="svg_12" width="145" x="0" y="0"/>
+            <path d="m66.52,36.37c0,0 -13.66,-0.64 -17.76,10.49c0,0 -3.99,12.11 9.39,18.8a31.44,31.44 0 0 0 27.09,-0.64a16.99,16.99 0 0 0 6.71,-6.4a15.1,15.1 0 0 0 -0.67,-16.33a27.84,27.84 0 0 0 -6.35,-5.72a53.35,53.35 0 0 0 -5.15,-3.18c-2.7,-1.45 -5.93,-2.77 -7.38,-4.18c0,0 -3.92,-3.07 -3.5,-9.69c0,0 -2.89,7.03 2.83,12.28a26.68,26.68 0 0 0 5.98,4.04c0.16,0.08 1.88,1.08 3.27,2c3.53,2.32 8.4,5.4 8.43,11.72a12.41,12.41 0 0 1 -2.58,7.99a16.08,16.08 0 0 1 -7.18,5.72c0,0 -8.71,3.56 -17.27,0.12c0,0 -10.77,-4.25 -9.63,-15.25a9.96,9.96 0 0 1 2.04,-4.81a19.07,19.07 0 0 1 11.73,-6.96" fill="#b87a20" id="svg_9" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
+            <rect fill="#b87a20" height="3.23" id="svg_10" width="16.78" x="77.72" y="58.72"/>
+            <path d="m48.93,36.69c0,0 -9.39,5.15 -9.34,15.3a17.2,17.2 0 0 0 10.89,15.86c0,0 -9.21,-6.3 -8.83,-16.65c0,0 -0.01,-7.67 7.28,-14.51" fill="#b87a20" id="svg_11" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
+            <path d="m93.72,36.66c0,0 9.25,5.39 8.94,15.54a17.2,17.2 0 0 1 -11.3,15.57c0,0 9.37,-6.06 9.26,-16.42c0,0 0.21,-7.66 -6.9,-14.69" fill="#b87a20" id="svg_23" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
+            <path d="m70.67,57.62c0,0 -5.86,-0.46 -9.2,-4.31c0,0 -2.23,-2.09 -2.73,-7.21c-0.1,-0.92 -2.65,5.59 2.84,10.52a13.51,13.51 0 0 0 9.08,3.37c0,0 0,-0.24 0.01,-2.37" fill="#b87a20" id="svg_13" transform="matrix(1.8959548,0,0,1.8959548,-62.432028,-29.335497)"/>
+        </g>
+        <g fill="#d4a855" id="sun" transform="matrix(1 0 0 1 0 0) matrix(1.4 0 0 1.4 -40 -60)">
+            <circle cx="200" cy="265" id="svg_1" r="72"/>
+            <rect height="60" id="svg_2" rx="12" width="24" x="188" y="128"/>
+            <rect height="60" id="svg_3" rx="12" width="24" x="188" y="340"/>
+            <rect height="24" id="svg_4" rx="12" width="60" x="63" y="253"/>
+            <rect height="24" id="svg_5" rx="12" width="60" x="277" y="253"/>
+            <rect height="60" id="svg_6" rx="12" transform="rotate(-45 116 192)" width="24" x="104" y="162"/>
+            <rect height="60" id="svg_7" rx="12" transform="rotate(45 276 192)" width="24" x="264" y="162"/>
+            <rect height="60" id="svg_8" rx="12" transform="rotate(45 116 338)" width="24" x="104" y="308"/>
+            <rect height="60" id="svg_9" rx="12" transform="rotate(-45 276 338)" width="24" x="264" y="308"/>
+        </g>
+        <g>
+            <rect fill="#7a5010" height="90" width="680" x="0" y="590"/>
+            <rect fill="#9a6818" height="7" opacity="0.7" rx="3" width="200" x="40" y="600"/>
+            <rect fill="#9a6818" height="5" opacity="0.5" rx="3" width="140" x="300" y="612"/>
+            <rect fill="#9a6818" height="6" opacity="0.6" rx="3" width="180" x="480" y="603"/>
+            <rect fill="#9a6818" height="5" opacity="0.5" rx="3" width="100" x="80" y="622"/>
+            <rect fill="#9a6818" height="6" opacity="0.5" rx="3" width="160" x="390" y="630"/>
+            <rect fill="#9a6818" height="4" opacity="0.4" rx="3" width="120" x="200" y="642"/>
+            <rect fill="#9a6818" height="5" opacity="0.4" rx="3" width="90" x="560" y="650"/>
+            <path d="M0,590 Q40,582 80,590 Q120,598 160,590 Q200,582 240,590 Q280,598 320,590 Q360,582 400,590 Q440,598 480,590 Q520,582 560,590 Q600,598 640,590 L680,590 L680,600 L0,600 Z" fill="#8a6014"/>
+            <path d="M0,590 L0,510 Q30,495 60,505 Q90,515 110,500 Q130,485 150,495 Q170,505 180,490 L200,590 Z" fill="#7a5a18"/>
+            <path d="M0,510 Q30,495 60,505 Q90,515 110,500 Q130,485 150,495 Q170,505 180,490 L200,490" fill="none" stroke="#c09030" stroke-width="2.5"/>
+            <path d="M680,590 L680,520 Q650,505 620,515 Q590,525 565,510 Q545,498 525,510 L500,590 Z" fill="#7a5a18"/>
+            <path d="M680,520 Q650,505 620,515 Q590,525 565,510 Q545,498 525,510" fill="none" stroke="#c09030" stroke-width="2.5"/>
+            <rect fill="#5a3a08" height="28" rx="3" width="8" x="56" y="462"/>
+            <polygon fill="#5a4010" points="60,430 42,468 78,468"/>
+            <polygon fill="#6a5018" points="60,443 38,476 82,476"/>
+            <polygon fill="#5a4010" points="60,455 36,486 84,486"/>
+            <rect fill="#5a3a08" height="24" rx="3" width="7" x="120" y="466"/>
+            <polygon fill="#5a4010" points="123,437 107,472 140,472"/>
+            <polygon fill="#6a5018" points="123,450 104,480 142,480"/>
+            <polygon fill="#5a4010" points="123,460 102,490 144,490"/>
+            <rect fill="#5a3a08" height="28" rx="3" width="8" x="616" y="462"/>
+            <polygon fill="#5a4010" points="620,430 602,468 638,468"/>
+            <polygon fill="#6a5018" points="620,443 598,476 642,476"/>
+            <polygon fill="#5a4010" points="620,455 596,486 644,486"/>
+            <rect fill="#5a3a08" height="22" rx="3" width="7" x="553" y="470"/>
+            <polygon fill="#5a4010" points="556,442 540,476 573,476"/>
+            <polygon fill="#6a5018" points="556,455 537,484 575,484"/>
+            <polygon fill="#5a4010" points="556,465 535,492 577,492"/>
+            <path d="M220,590 Q260,535 310,520 Q350,508 370,520 Q390,533 420,590 Z" fill="#6a4a10"/>
+            <path d="M310,520 Q350,508 370,520" fill="none" stroke="#b07820" stroke-width="2"/>
+            <rect fill="#4a3008" height="18" rx="2" width="6" x="337" y="502"/>
+            <polygon fill="#4a3808" points="340,486 328,508 352,508"/>
+            <polygon fill="#5a4810" points="340,496 326,514 354,514"/>
+            <ellipse cx="130" cy="588" fill="#6a4a10" rx="22" ry="8"/>
+            <ellipse cx="540" cy="585" fill="#6a4a10" rx="18" ry="7"/>
+            <ellipse cx="340" cy="592" fill="#6a4a10" rx="14" ry="5"/>
+        </g>
+
+        <g id="labelText" transform="translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) matrix(1 0 0 1 0 0) translate(-1 0) translate(0.98838 482.617) scale(1.00147 1) translate(-0.98838 -482.617) translate(0.98838 482.676) scale(1.00147 1) translate(-0.98838 -482.676)">
+            <rect fill="#ffffff" fill-opacity="0.6" height="110" id="svg_7" transform="matrix(0.988372 0 0 0.892857 -38.5465 450.018)" width="686" x="40" y="38.5"/>
+            <text fill="#000000" font-family="Courier" font-size="88" font-weight="900" id="svg_6" text-anchor="middle" transform="matrix(1.00147 0 0 1 -1.00146 444)" x="340" y="118">**WEATHER**</text>
+        </g>
+    </g>
+</svg>
