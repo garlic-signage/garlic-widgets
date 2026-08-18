@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:ia="http://www.iadea.com/2013/widget/api"
+        id="com.example.stream-widget"
+        version="1.0.0">
+
+    <name>Stream Widget</name>
+    <description>Spielt einen Video- oder Audiostream fullscreen ab.</description>
+    <author>Your Name</author>
+    <content src="index.html"/>
+    <icon src="icon.png"/>
+
+    <preference name="streamUrl" ia:types="text" ia:mandatory="true" ia:tooltip="URL des Video- oder Audiostreams" ia:default=""/>
+    <preference name="mediaType" ia:types="text" ia:mandatory="true" ia:tooltip="Medientyp: video oder audio" ia:default="video"/>
+    <preference name="showControls" ia:types="text" ia:mandatory="true" ia:tooltip="Play-Controls anzeigen: true oder false" ia:default="false"/>
+
+</widget>
