@@ -10,7 +10,7 @@
         Islamic prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) with the next prayer highlighted, a live countdown and the Hijri date. Data from the Aladhan API. Adapts to landscape, portrait, banner and square zones. Caches the running month for offline operation.
     </description>
 
-    <author href="https://garlic-signage.com">Niko Sagiadinos</author>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
 
     <icon src="icon.png"/>
     <content src="index.html"/>

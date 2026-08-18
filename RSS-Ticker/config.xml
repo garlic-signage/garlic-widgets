@@ -3,7 +3,7 @@
 
     <name short="rss-news">RSS-Ticker</name>
     <description>RSS-Ticker based on HTML Canvas for Digital Signage Screens</description>
-    <author href="https://sagiadinos.com.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 

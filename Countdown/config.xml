@@ -6,7 +6,7 @@
 
     <name>Flip Countdown</name>
     <description>Flip-clock countdown with configurable target date, timezone, language and colors.</description>
-    <author>smil-control</author>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 

@@ -11,7 +11,7 @@
         Supports multiple weather API providers via a normalized adapter layer.
     </description>
     <version>1.0.0.0</version>
-    <author>Niko Sagiadinos</author>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
 
     <content src="index.html"/>
     <icon src="icon.png"/>

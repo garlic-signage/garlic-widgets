@@ -3,7 +3,7 @@
 
     <name>WebWrap</name>
     <description>Web-Wrapper Widget for GarlicSignage. Opens any URL in an iframe and returns to the default playlist after a configurable idle timeout.</description>
-    <author href="https://sagiadinos.com.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 
