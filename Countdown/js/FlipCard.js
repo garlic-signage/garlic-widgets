@@ -2,10 +2,8 @@
 
 var FLIP_TOTAL_MS = 700; // must be >= 2 * CSS --flip-speed
 
-export class FlipCard
-{
-    constructor(labelText)
-	{
+export class FlipCard {
+    constructor(labelText) {
         this.value = null;
         this.timer = null;
 
@@ -20,8 +18,8 @@ export class FlipCard
             '<div class="half flap-upper"><span></span></div>' +
             '<div class="half flap-lower"><span></span></div>';
 
-        this.upperEl     = this.cardEl.querySelector(".upper span");
-        this.lowerEl      = this.cardEl.querySelector(".lower span");
+        this.upperEl = this.cardEl.querySelector(".upper span");
+        this.lowerEl = this.cardEl.querySelector(".lower span");
         this.flapUpperEl = this.cardEl.querySelector(".flap-upper span");
         this.flapLowerEl = this.cardEl.querySelector(".flap-lower span");
 
@@ -33,18 +31,15 @@ export class FlipCard
         this.unitEl.appendChild(this.labelEl);
     }
 
-    appendTo(parentEl)
-	{
+    appendTo(parentEl) {
         parentEl.appendChild(this.unitEl);
     }
 
-    setWide(isWide)
-	{
+    setWide(isWide) {
         this.cardEl.classList.toggle("wide", isWide);
     }
 
-    setValue(text)
-	{
+    setValue(text) {
         if (this.value === text) return;
 
         if (this.value === null) { // initial paint, no animation
@@ -57,9 +52,8 @@ export class FlipCard
         var oldText = this.value;
         this.value = text;
 
-        if (this.timer)
-		{
-			// animation still running, hard set
+        if (this.timer) {
+            // animation still running, hard set
             clearTimeout(this.timer);
             this.cardEl.classList.remove("flipping");
         }

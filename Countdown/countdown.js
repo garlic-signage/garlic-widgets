@@ -11,11 +11,11 @@
     }
 
     var cfg = {
-        target:     param("target", "2026-12-31 00:00"),
-        timezone:   param("timezone", ""),
-        language:   param("language", "de").toLowerCase(),
-        bgcolor:    param("bgcolor", "#10151B"),
-        cardcolor:  param("cardcolor", "#1F2731"),
+        target: param("target", "2026-12-31 00:00"),
+        timezone: param("timezone", ""),
+        language: param("language", "de").toLowerCase(),
+        bgcolor: param("bgcolor", "#10151B"),
+        cardcolor: param("cardcolor", "#1F2731"),
         digitcolor: param("digitcolor", "#FFFFFF"),
         labelcolor: param("labelcolor", "#8FA0B3")
     };
@@ -53,7 +53,9 @@
             hour: "2-digit", minute: "2-digit", second: "2-digit"
         });
         var p = {};
-        dtf.formatToParts(new Date(ts)).forEach(function (x) { p[x.type] = x.value; });
+        dtf.formatToParts(new Date(ts)).forEach(function (x) {
+            p[x.type] = x.value;
+        });
         var asUtc = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute, +p.second);
         return asUtc - ts;
     }

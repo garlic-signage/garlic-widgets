@@ -2,10 +2,9 @@
 
 import {FlipCard} from "./FlipCard.js";
 import {RemainingTime} from "./RemainingTime.js";
-export class FlipCountdown
-{
-    constructor(containerEl, targetTs, labels)
-	{
+
+export class FlipCountdown {
+    constructor(containerEl, targetTs, labels) {
         this.targetTs = targetTs;
         this.cards = labels.map(function (label) {
             return new FlipCard(label);
@@ -16,8 +15,7 @@ export class FlipCountdown
         this.intervalId = null;
     }
 
-    start()
-	{
+    start() {
         this._render();
         let self = this;
         this.intervalId = setInterval(function () {
