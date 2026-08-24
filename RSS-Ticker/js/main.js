@@ -9,13 +9,12 @@ import {RSSFetcher} from "./RSSFetcher.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	// enter the path to the fetch-rss.php from tools Dir
-	const pathToFetcherScript = 'https://YOUR_PATH_TO/fetch-rss.php';
-	const tickerView      = new TickerView();
-	const tickerFormatter = new TickerFormatter(tickerView);
+    // enter the path to the fetch-rss.php from tools Dir
+    const tickerView = new TickerView();
+    const tickerFormatter = new TickerFormatter(tickerView);
 
-	const rssFetcher      = new RSSFetcher(pathToFetcherScript);
+    const rssFetcher = new RSSFetcher();
 
-	const app = new TickerApp(tickerView, tickerFormatter, rssFetcher);
-	app.init();
+    const app = new TickerApp(tickerView, tickerFormatter, rssFetcher);
+    app.init();
 });

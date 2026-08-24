@@ -7,15 +7,20 @@
  */
 export class RSSFetcher
 {
-	constructor(baseUrl)
+	#baseUrl = "";
+	constructor()
 	{
-		this.baseUrl = baseUrl + "?feed_url=";
+	}
+
+
+	set baseUrl(value) {
+		this.#baseUrl = value + "?feed_url=";
 	}
 
 	fetch(feedUrl)
 	{
 		return new Promise((resolve, reject) => {
-			const requestUrl = this.baseUrl + feedUrl;
+			const requestUrl = this.#baseUrl + feedUrl;
 			const request = new XMLHttpRequest();
 
 			request.open("GET", requestUrl, true);
