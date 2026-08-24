@@ -7,8 +7,10 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
 
-    <preference name="url" ia:types="text" ia:mandatory="true" ia:label="RSS-URl" ia:tooltip="URl of RSS Feed" />
-    <preference name="font_size" ia:default="30" ia:label="Font size"  ia:types="integer"  />
-    <preference name="bgcolor" ia:types="color"  ia:label="Background color"  ia:default="#008080" ia:previewbg="true"/>
-    <preference name="color" ia:types="color"  ia:label="Text color"  ia:default="#ffffff" />
+    <preference name="url" ia:types="text" ia:mandatory="true" ia:label="RSS-URl" ia:tooltip="URl of RSS Feed"/>
+    <preference name="fetch_rss" ia:types="text" ia:mandatory="true" ia:label="RSS Fetcher"
+                ia:tooltip="URl of the RSS Fetcher (https://YOUR_PATH_TO/fetch-rss.php)"/>
+    <preference name="font_size" ia:default="30" ia:label="Font size" ia:types="integer"/>
+    <preference name="bgcolor" ia:types="color" ia:label="Background color" ia:default="#008080" ia:previewbg="true"/>
+    <preference name="color" ia:types="color" ia:label="Text color" ia:default="#ffffff"/>
 </widget>
