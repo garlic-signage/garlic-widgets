@@ -52,9 +52,9 @@
             <circle cx="200" cy="280" fill="#d4a855" r="6"/>
         </g>
 
-        <g id="labelText" transform="translate(0 -10)">
+        <g id="labelText" transform="translate(0 -10) translate(0 -10) translate(0 -10) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) translate(0 -1) matrix(1 0 0 1 0 0) translate(-1 0) translate(0.98838 482.617) scale(1.00147 1) translate(-0.98838 -482.617) translate(0.98838 482.676) scale(1.00147 1) translate(-0.98838 -482.676)">
             <rect fill="#ffffff" fill-opacity="0.6" height="110" id="svg_7" transform="matrix(0.988372 0 0 0.892857 -38.5465 450.018)" width="686" x="40" y="38.5"/>
-            <text fill="#000000" font-family="Courier" font-size="70" font-weight="900" id="svg_6" text-anchor="middle" transform="matrix(1.00147 0 0 1 -1.00146 444)" x="340" y="118">**COUNTDOWN**</text>
+            <text fill="#000000" font-family="Courier" font-size="88" font-weight="900" id="svg_6" text-anchor="middle" transform="matrix(1.00147 0 0 1 -1.00146 444)" x="340" y="118">**COUNTDOWN**</text>
         </g>
     </g>
 </svg>
