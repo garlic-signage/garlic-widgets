@@ -5,8 +5,8 @@
         version="1.0.0">
 
     <name>Stream Widget</name>
-    <description>Spielt einen Video- oder Audiostream fullscreen ab.</description>
-    <author>Your Name</author>
+    <description>Plays a video or audio stream in full-screen mode.</description>
+    <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 
