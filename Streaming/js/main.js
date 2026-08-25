@@ -3,7 +3,7 @@
  * creates the media player and attaches error handling.
  */
 import ConfigParams from './ConfigParams.js';
-import MediaPlayer  from './MediaPlayer.js';
+import MediaPlayer from './MediaPlayer.js';
 import ErrorHandler from './ErrorHandler.js';
 
 const CONTAINER_ID = 'player-container';

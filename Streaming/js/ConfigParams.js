@@ -2,13 +2,11 @@
  * Reads and provides widget parameters from the URL query string,
  * as passed in by the player based on config.xml preferences.
  */
-export default class ConfigParams
-{
+export default class ConfigParams {
     /**
      * Initializes the parser with the current window location.
      */
-    constructor()
-    {
+    constructor() {
         this.params = new URLSearchParams(window.location.search);
     }
 
@@ -22,8 +20,7 @@ export default class ConfigParams
      * Returns the configured stream URL.
      * @returns {string} The stream URL, or the default test stream if not set.
      */
-    getStreamUrl()
-    {
+    getStreamUrl() {
         return this.params.get('streamUrl') || ConfigParams.DEFAULT_STREAM_URL;
     }
 
@@ -31,8 +28,7 @@ export default class ConfigParams
      * Returns the configured media type.
      * @returns {string} Either "video" or "audio". Defaults to "video".
      */
-    getMediaType()
-    {
+    getMediaType() {
         const type = this.params.get('mediaType');
         return type === 'audio' ? 'audio' : 'video';
     }
@@ -41,8 +37,7 @@ export default class ConfigParams
      * Returns whether playback controls should be shown.
      * @returns {boolean} True if controls should be visible.
      */
-    getShowControls()
-    {
+    getShowControls() {
         return this.params.get('showControls') === 'true';
     }
 }
