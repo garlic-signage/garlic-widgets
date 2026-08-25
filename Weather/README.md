@@ -1,6 +1,7 @@
 # Weather Widget
 
-A responsive Digital Signage weather widget with animated icons, background images and a 3-day forecast. Supports multiple weather API providers via a normalized adapter layer.
+A responsive Digital Signage weather widget with animated icons, background images and a 3-day forecast. Supports
+multiple weather API providers via a normalized adapter layer.
 
 ## Structure
 
@@ -40,15 +41,15 @@ weather-widget/
 
 Passed from the DS CMS as URL query string.
 
-| Name       | Default      | Description                                          |
-|------------|--------------|------------------------------------------------------|
+| Name       | Default      | Description                                                |
+|------------|--------------|------------------------------------------------------------|
 | `provider` | `open-meteo` | API provider: `open-meteo`, `openweathermap`, `weatherapi` |
-| `apikey`   | _(empty)_    | API key (not required for open-meteo free tier)      |
-| `city`     | `Hannover`   | City name (used if no coordinates are given)         |
-| `lat`      | _(empty)_    | Latitude — takes priority over `city`                |
-| `lon`      | _(empty)_    | Longitude — takes priority over `city`               |
-| `lang`     | `de`         | Language: `de` or `en`                               |
-| `refresh`  | `3600000`    | Cache TTL in milliseconds (default: 1 hour)          |
+| `apikey`   | _(empty)_    | API key (not required for open-meteo free tier)            |
+| `city`     | `Hannover`   | City name (used if no coordinates are given)               |
+| `lat`      | _(empty)_    | Latitude — takes priority over `city`                      |
+| `lon`      | _(empty)_    | Longitude — takes priority over `city`                     |
+| `lang`     | `de`         | Language: `de` or `en`                                     |
+| `refresh`  | `3600000`    | Cache TTL in milliseconds (default: 1 hour)                |
 
 Coordinates always take priority over city name. If neither is given, defaults to Hannover.
 
@@ -105,11 +106,11 @@ Background images are AI-generated and licensed for free use.
 
 ## API Providers
 
-| Provider | Free Tier | API Key | Docs |
-|---|---|---|---|
-| Open-Meteo | Unlimited | No (optional for commercial) | https://open-meteo.com/en/docs |
-| OpenWeatherMap | 1000 calls/day | Yes | https://openweathermap.org/api |
-| WeatherAPI | 1M calls/month | Yes | https://www.weatherapi.com/docs |
+| Provider       | Free Tier      | API Key                      | Docs                            |
+|----------------|----------------|------------------------------|---------------------------------|
+| Open-Meteo     | Unlimited      | No (optional for commercial) | https://open-meteo.com/en/docs  |
+| OpenWeatherMap | 1000 calls/day | Yes                          | https://openweathermap.org/api  |
+| WeatherAPI     | 1M calls/month | Yes                          | https://www.weatherapi.com/docs |
 
 ## Adding a new Provider
 

@@ -4,14 +4,13 @@
  * Every adapter must implement fetchByCoords() and fetchByCity()
  * and return a normalized WeatherData object.
  */
-export class BaseAdapter
-{
-	apiKey
+export class BaseAdapter {
+    apiKey
+
     /**
      * @param {string} apiKey
      */
-    constructor(apiKey = '')
-	{
+    constructor(apiKey = '') {
         if (new.target === BaseAdapter)
             throw new Error('BaseAdapter is abstract and cannot be instantiated directly.');
 
@@ -23,8 +22,7 @@ export class BaseAdapter
      * @param {number} lon
      * @returns {Promise<NormalizedWeatherData>}
      */
-    async fetchByCoords(lat, lon)
-	{
+    async fetchByCoords(lat, lon) {
         throw new Error('fetchByCoords() must be implemented.');
     }
 
@@ -32,8 +30,7 @@ export class BaseAdapter
      * @param {string} city
      * @returns {Promise<NormalizedWeatherData>}
      */
-    async fetchByCity(city)
-	{
+    async fetchByCity(city) {
         throw new Error('fetchByCity() must be implemented.');
     }
 
@@ -66,23 +63,22 @@ export class BaseAdapter
      * @property {number} humidity   - Relative humidity in %
      * @property {number} wind_speed - Wind speed in km/h
      */
-    normalizedSchema()
-	{
+    normalizedSchema() {
         return {
-            temperature:    null,
-            feels_like:     null,
-            humidity:       null,
-            wind_speed:     null,
+            temperature: null,
+            feels_like: null,
+            humidity: null,
+            wind_speed: null,
             wind_direction: null,
-            condition:      null,
+            condition: null,
             condition_text: null,
-            is_day:         true,
-            location:       null,
-            lat:            null,
-            lon:            null,
-            timestamp:      Date.now(),
-            provider:       null,
-            forecast:       []
+            is_day: true,
+            location: null,
+            lat: null,
+            lon: null,
+            timestamp: Date.now(),
+            provider: null,
+            forecast: []
         };
     }
 
@@ -91,8 +87,7 @@ export class BaseAdapter
      * @param {string} url
      * @returns {Promise<Object>}
      */
-    async get(url)
-	{
+    async get(url) {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`${this.constructor.name}: HTTP ${response.status} for ${url}`);

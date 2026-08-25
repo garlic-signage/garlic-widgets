@@ -3,17 +3,15 @@
  * localStorage-based cache with TTL.
  * Default TTL: 1 hour.
  */
-export class Cache
-{
-	#ttl;
-	#prefix;
+export class Cache {
+    #ttl;
+    #prefix;
 
     /**
      * @param {number} ttlMs - Time-to-live in milliseconds (default: 3600000 = 1h)
      */
-    constructor(ttlMs = 60 * 60 * 1000)
-	{
-        this.#ttl    = ttlMs;
+    constructor(ttlMs = 60 * 60 * 1000) {
+        this.#ttl = ttlMs;
         this.#prefix = 'weather_widget_';
     }
 
@@ -22,23 +20,18 @@ export class Cache
      * @param {string} key
      * @returns {any|null}
      */
-    get(key)
-	{
-        try
-		{
+    get(key) {
+        try {
             const raw = localStorage.getItem(this.#prefix + key);
             if (!raw) return null;
 
             const entry = JSON.parse(raw);
-            if (Date.now() > entry.expiresAt)
-			{
+            if (Date.now() > entry.expiresAt) {
                 this.delete(key);
                 return null;
             }
             return entry.value;
-        }
-		catch
-		{
+        } catch {
             return null;
         }
     }
@@ -48,15 +41,11 @@ export class Cache
      * @param {string} key
      * @param {any} value
      */
-    set(key, value)
-	{
-        try
-		{
-            const entry = { value, expiresAt: Date.now() + this.#ttl };
+    set(key, value) {
+        try {
+            const entry = {value, expiresAt: Date.now() + this.#ttl};
             localStorage.setItem(this.#prefix + key, JSON.stringify(entry));
-        }
-		catch (e)
-		{
+        } catch (e) {
             // localStorage full or unavailable — fail silently
             console.warn('Cache: Write failed.', e);
         }
@@ -65,16 +54,14 @@ export class Cache
     /**
      * @param {string} key
      */
-    delete(key)
-	{
+    delete(key) {
         localStorage.removeItem(this.#prefix + key);
     }
 
     /**
      * Clear all weather widget cache entries.
      */
-    clear()
-	{
+    clear() {
         Object.keys(localStorage)
             .filter(k => k.startsWith(this.prefix))
             .forEach(k => localStorage.removeItem(k));
@@ -88,8 +75,7 @@ export class Cache
      * @param {number|null} lon
      * @returns {string}
      */
-    static buildKey(provider, city, lat, lon)
-	{
+    static buildKey(provider, city, lat, lon) {
         if (lat !== null && lon !== null) return `${provider}_${lat}_${lon}`;
         return `${provider}_${city.toLowerCase().trim()}`;
     }

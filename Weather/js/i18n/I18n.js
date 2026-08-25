@@ -11,7 +11,7 @@ export class I18n {
      */
     constructor(translations, lang = 'en') {
         this.translations = translations;
-        this.lang         = translations[lang] ? lang : 'en';
+        this.lang = translations[lang] ? lang : 'en';
     }
 
     /**
@@ -23,8 +23,8 @@ export class I18n {
      */
     t(key, vars = {}) {
         const str = this.translations[this.lang]?.[key]
-                 ?? this.translations['en']?.[key]
-                 ?? key;
+            ?? this.translations['en']?.[key]
+            ?? key;
 
         return str.replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? `{{${k}}}`);
     }

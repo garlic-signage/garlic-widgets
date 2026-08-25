@@ -1,65 +1,59 @@
-import { BaseAdapter } from './BaseAdapter.js';
+import {BaseAdapter} from './BaseAdapter.js';
 
 /**
  * WeatherApiAdapter
  * API key required (free plan: 1M calls/month).
  * Docs: https://www.weatherapi.com/docs/
  */
-export class WeatherApiAdapter extends BaseAdapter
-{
-	#baseUrl;
+export class WeatherApiAdapter extends BaseAdapter {
+    #baseUrl;
 
-    constructor(apiKey = '')
-	{
+    constructor(apiKey = '') {
         super(apiKey);
         this.#baseUrl = 'https://api.weatherapi.com/v1';
     }
 
-    async fetchByCoords(lat, lon)
-	{
+    async fetchByCoords(lat, lon) {
         return this._fetch(`${lat},${lon}`);
     }
 
-    async fetchByCity(city)
-	{
+    async fetchByCity(city) {
         return this._fetch(encodeURIComponent(city));
     }
 
-    async _fetch(query)
-	{
-        const url  = `${this.#baseUrl}/forecast.json?key=${this.apiKey}&q=${query}&days=7&aqi=no&alerts=no&lang=en`;
+    async _fetch(query) {
+        const url = `${this.#baseUrl}/forecast.json?key=${this.apiKey}&q=${query}&days=7&aqi=no&alerts=no&lang=en`;
         const data = await this.get(url);
         return this.#normalize(data);
     }
 
-    #normalize(data)
-	{
-        const schema  = this.normalizedSchema();
+    #normalize(data) {
+        const schema = this.normalizedSchema();
         const current = data.current;
-        const loc     = data.location;
-        const today   = new Date().toISOString().split('T')[0];
+        const loc = data.location;
+        const today = new Date().toISOString().split('T')[0];
 
-        schema.temperature    = current.temp_c;
-        schema.feels_like     = current.feelslike_c;
-        schema.humidity       = current.humidity;
-        schema.wind_speed     = current.wind_kph;
+        schema.temperature = current.temp_c;
+        schema.feels_like = current.feelslike_c;
+        schema.humidity = current.humidity;
+        schema.wind_speed = current.wind_kph;
         schema.wind_direction = current.wind_degree;
-        schema.condition      = this.#mapCondition(current.condition.code, current.is_day);
+        schema.condition = this.#mapCondition(current.condition.code, current.is_day);
         schema.condition_text = current.condition.text;
-        schema.is_day         = current.is_day === 1;
-        schema.location       = `${loc.name}, ${loc.country}`;
-        schema.lat            = parseFloat(loc.lat);
-        schema.lon            = parseFloat(loc.lon);
-        schema.provider       = 'weatherapi';
-        schema.forecast       = data.forecast.forecastday
+        schema.is_day = current.is_day === 1;
+        schema.location = `${loc.name}, ${loc.country}`;
+        schema.lat = parseFloat(loc.lat);
+        schema.lon = parseFloat(loc.lon);
+        schema.provider = 'weatherapi';
+        schema.forecast = data.forecast.forecastday
             .filter(day => day.date > today)
             .slice(0, 3)
             .map(day => ({
-                date:       day.date,
-                temp_min:   day.day.mintemp_c,
-                temp_max:   day.day.maxtemp_c,
-                condition:  this.#mapCondition(day.day.condition.code, 1),
-                humidity:   day.day.avghumidity,
+                date: day.date,
+                temp_min: day.day.mintemp_c,
+                temp_max: day.day.maxtemp_c,
+                condition: this.#mapCondition(day.day.condition.code, 1),
+                humidity: day.day.avghumidity,
                 wind_speed: day.day.maxwind_kph
             }));
 
@@ -70,8 +64,7 @@ export class WeatherApiAdapter extends BaseAdapter
      * WeatherAPI condition codes → normalized condition key
      * https://www.weatherapi.com/docs/weather_conditions.json
      */
-    #mapCondition(code, isDay = 1)
-	{
+    #mapCondition(code, isDay = 1) {
         const map = {
             1000: isDay ? 'sunny' : 'clear_night',
             1003: isDay ? 'mostly_sunny' : 'mostly_clear_night',
