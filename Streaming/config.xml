@@ -10,11 +10,11 @@
     <content src="index.html"/>
     <icon src="icon.png"/>
 
-    <preference name="streamUrl" ia:types="text" ia:mandatory="true" ia:tooltip="URL des Video- oder Audiostreams"
+    <preference name="streamUrl" ia:types="text" ia:mandatory="true" ia:label="Stream-URl" ia:tooltip="URL of the video- or audio streams"
                 ia:default=""/>
-    <preference name="mediaType" ia:types="text" ia:mandatory="true" ia:tooltip="Medientyp: video oder audio"
+    <preference name="mediaType" ia:types="text" ia:mandatory="true" ia:label="Media Type"  ia:tooltip="Media type: video or audio"
                 ia:default="video"/>
-    <preference name="showControls" ia:types="text" ia:mandatory="true"
-                ia:tooltip="Play-Controls anzeigen: true oder false" ia:default="false"/>
+    <preference name="showControls" ia:types="text" ia:mandatory="true" ia:label="Show Controls"
+                ia:tooltip="Show play controls: true or false" ia:default="false"/>
 
 </widget>
