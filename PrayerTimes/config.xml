@@ -7,7 +7,9 @@
 
     <name>Prayer Times</name>
     <description>
-        Islamic prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) with the next prayer highlighted, a live countdown and the Hijri date. Data from the Aladhan API. Adapts to landscape, portrait, banner and square zones. Caches the running month for offline operation.
+        Islamic prayer times (Fajr, Dhuhr, Asr, Maghrib, Isha) with the next prayer highlighted, a live countdown and
+        the Hijri date. Data from the Aladhan API. Adapts to landscape, portrait, banner and square zones. Caches the
+        running month for offline operation.
     </description>
 
     <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
@@ -26,17 +28,23 @@
 
     <!-- ============ Location (required) ============ -->
     <!-- Provide latitude + longitude (canonical), OR city + country. -->
-    <preference name="latitude"  ia:types="text" ia:label="Latitude" ia:tooltip="Enter a latitude. Alternative: city and country."/>
-    <preference name="longitude" ia:types="text" ia:label="Longitude" ia:tooltip="Enter a longitude. Alternative: city and country."/>
-    <preference name="city"      ia:types="text" ia:label="City" ia:tooltip="Enter a city. Alternative: latitude and longitude."/>
-    <preference name="country"   ia:types="text" ia:label="Country" ia:tooltip="Enter a country. Alternative: latitude and longitude."/>
+    <preference name="latitude" ia:types="text" ia:label="Latitude"
+                ia:tooltip="Enter a latitude. Alternative: city and country."/>
+    <preference name="longitude" ia:types="text" ia:label="Longitude"
+                ia:tooltip="Enter a longitude. Alternative: city and country."/>
+    <preference name="city" ia:types="text" ia:label="City"
+                ia:tooltip="Enter a city. Alternative: latitude and longitude."/>
+    <preference name="country" ia:types="text" ia:label="Country"
+                ia:tooltip="Enter a country. Alternative: latitude and longitude."/>
 
     <!-- ============ Calculation (important) ============ -->
     <!-- method: Aladhan calculation method id.
        2=ISNA, 3=Muslim World League, 4=Umm al-Qura, 5=Egyptian, 13=Diyanet ... -->
-    <preference name="method" value="3" ia:types="integer" ia:label="Method" ia:tooltip="The Aladhan calculation method id. 2=ISNA, 3=Muslim World League, 4=Umm al-Qura, 5=Egyptian, 13=Diyanet ..." />
+    <preference name="method" value="3" ia:types="integer" ia:label="Method"
+                ia:tooltip="The Aladhan calculation method id. 2=ISNA, 3=Muslim World League, 4=Umm al-Qura, 5=Egyptian, 13=Diyanet ..."/>
     <!-- school: Asr calculation. 0=Shafi (standard), 1=Hanafi -->
-    <preference name="school" value="0"  ia:types="integer" ia:label="Method" ia:tooltip="The Asr calculation School. 0=Shafi (standard), 1=Hanafi" />
+    <preference name="school" value="0" ia:types="integer" ia:label="Method"
+                ia:tooltip="The Asr calculation School. 0=Shafi (standard), 1=Hanafi"/>
     <!-- timezone: IANA string, e.g. Europe/London. Leave empty to let the API decide. -->
     <preference name="timezone" ia:types="combo" ia:mandatory="false" ia:default="Europe/London" ia:label="Timezone">
         <ia:options value="">Auto (API)</ia:options>
@@ -110,27 +118,33 @@
     </preference>
     <!-- ============ Display ============ -->
     <!-- timeFormat: "24" or "12" -->
-    <preference name="timeFormat" ia:types="radio" ia:default="24" ia:label="Time Format" ia:tooltip="Display time in 12 or 14 hours format.">
-        <ia:options value="24" resourceKey="24" />
-        <ia:options value="12" resourceKey="12" />
+    <preference name="timeFormat" ia:types="radio" ia:default="24" ia:label="Time Format"
+                ia:tooltip="Display time in 12 or 14 hours format.">
+        <ia:options value="24" resourceKey="24"/>
+        <ia:options value="12" resourceKey="12"/>
     </preference>
-    <preference name="showSunrise" ia:types="radio" ia:default="true" ia:label="Show sunrise" ia:tooltip="Show time of the sunrise.">
-        <ia:options value="true" resourceKey="true" />
-        <ia:options value="false" resourceKey="false" />
+    <preference name="showSunrise" ia:types="radio" ia:default="true" ia:label="Show sunrise"
+                ia:tooltip="Show time of the sunrise.">
+        <ia:options value="true" resourceKey="true"/>
+        <ia:options value="false" resourceKey="false"/>
     </preference>
-    <preference name="showJumuah" ia:types="radio" ia:default="true" ia:label="Show jumuah" ia:tooltip="Show jumiua time.">
-        <ia:options value="true" resourceKey="true" />
-        <ia:options value="false" resourceKey="false" />
+    <preference name="showJumuah" ia:types="radio" ia:default="true" ia:label="Show jumuah"
+                ia:tooltip="Show jumiua time.">
+        <ia:options value="true" resourceKey="true"/>
+        <ia:options value="false" resourceKey="false"/>
     </preference>
-    <preference name="highlightNext" ia:types="radio" ia:default="true" ia:label="Highlight next pray" ia:tooltip="Highlight the time of the next prey.">
-        <ia:options value="true" resourceKey="true" />
-        <ia:options value="false" resourceKey="false" />
+    <preference name="highlightNext" ia:types="radio" ia:default="true" ia:label="Highlight next pray"
+                ia:tooltip="Highlight the time of the next prey.">
+        <ia:options value="true" resourceKey="true"/>
+        <ia:options value="false" resourceKey="false"/>
     </preference>
-    <preference name="highlightNext" value="true"    readonly="false"/>
+    <preference name="highlightNext" value="true" readonly="false"/>
     <!-- accentColor: highlight colour for the next-prayer focus (hex) -->
-    <preference name="accentColor" value="#0F6E56"  ia:types="color" ia:default="#0F6E56" ia:previewbg="true" readonly="false"/>
+    <preference name="accentColor" value="#0F6E56" ia:types="color" ia:default="#0F6E56" ia:previewbg="true"
+                readonly="false"/>
     <!-- scrollSpeed: banner marquee speed in pixels per second -->
-    <preference name="scrollSpeed" value="60"  ia:types="integer" ia:label="Scroll speed" ia:tooltip="Scroll speed when widget ist dispalyd as banenr or ticker." />
+    <preference name="scrollSpeed" value="60" ia:types="integer" ia:label="Scroll speed"
+                ia:tooltip="Scroll speed when widget ist dispalyd as banenr or ticker."/>
     <!-- ============ Advanced (sensible defaults) ============ -->
     <!-- tune: per-prayer minute offsets, Aladhan format:
        imsak,fajr,sunrise,dhuhr,asr,maghrib,sunset,isha,midnight
@@ -139,6 +153,7 @@
        imsak,fajr,sunrise,dhuhr,asr,maghrib,sunset,isha,midnight.  e.g. 0,2,0,2,0,1,0,2,0"/>
     <!-- latitudeAdjustmentMethod: for high latitudes where Fajr/Isha do not occur.
        1=Middle of the Night, 2=One Seventh, 3=Angle Based -->
-    <preference name="latitudeAdjustmentMethod" value="" ia:types="text" ia:label="Tune" ia:tooltip="For high latitudes where Fajr/Isha do not occur. 1=Middle of the Night, 2=One Seventh, 3=Angle Based" />
+    <preference name="latitudeAdjustmentMethod" value="" ia:types="text" ia:label="Tune"
+                ia:tooltip="For high latitudes where Fajr/Isha do not occur. 1=Middle of the Night, 2=One Seventh, 3=Angle Based"/>
 
 </widget>
