@@ -1,4 +1,8 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 html, body {
     width: 100%;
@@ -50,7 +54,7 @@ html, body {
     margin-top: 2vw;
     width: 40vw;
     height: 0.5vw;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 999px;
     overflow: hidden;
 }

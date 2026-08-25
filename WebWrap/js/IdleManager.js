@@ -2,14 +2,12 @@
 // Copyright (c) 2026 sagiadinos
 'use strict';
 
-export class IdleManager
-{
-    constructor(config, overlayUI, onTimeout)
-	{
+export class IdleManager {
+    constructor(config, overlayUI, onTimeout) {
         this.config = config;
         this.overlayUI = overlayUI;
         this.onTimeout = onTimeout;
-        
+
         this.lastActivity = Date.now();
         this.countdownTick = null;
         this.overlayActive = false;
@@ -18,11 +16,10 @@ export class IdleManager
         this.startPolling();
     }
 
-    initListeners()
-	{
+    initListeners() {
         const events = ['mousedown', 'mousemove', 'touchstart', 'touchmove', 'keydown', 'wheel', 'pointerdown'];
         events.forEach(evt => {
-            document.addEventListener(evt, () => this.resetIdle(), { passive: true });
+            document.addEventListener(evt, () => this.resetIdle(), {passive: true});
         });
 
         this.overlayUI.addPointerDownListener(() => this.resetIdle());
@@ -33,58 +30,50 @@ export class IdleManager
                 try {
                     const fdoc = frame.contentDocument || frame.contentWindow.document;
                     events.forEach(evt => {
-                        fdoc.addEventListener(evt, () => this.resetIdle(), { passive: true });
+                        fdoc.addEventListener(evt, () => this.resetIdle(), {passive: true});
                     });
-                } catch (_) { /* cross-origin - ignore */ }
+                } catch (_) { /* cross-origin - ignore */
+                }
             });
         }
     }
 
-    resetIdle()
-	{
+    resetIdle() {
         this.lastActivity = Date.now();
         if (this.overlayActive) {
             this.hideOverlay();
         }
     }
 
-    showOverlay(secsLeft)
-	{
+    showOverlay(secsLeft) {
         this.overlayActive = true;
         this.overlayUI.show(secsLeft);
     }
 
-    hideOverlay()
-	{
+    hideOverlay() {
         this.overlayActive = false;
         this.overlayUI.hide();
-        if (this.countdownTick)
-		{
+        if (this.countdownTick) {
             clearInterval(this.countdownTick);
             this.countdownTick = null;
         }
     }
 
-    startCountdown(secsLeft)
-	{
+    startCountdown(secsLeft) {
         if (this.countdownTick) return;
         this.showOverlay(secsLeft);
         this.countdownTick = setInterval(() => {
             secsLeft--;
-            if (secsLeft <= 0)
-			{
+            if (secsLeft <= 0) {
                 this.hideOverlay();
                 this.onTimeout();
-            }
-			else
-			{
+            } else {
                 this.overlayUI.update(secsLeft);
             }
         }, 1000);
     }
 
-    startPolling()
-	{
+    startPolling() {
         setInterval(() => {
             const elapsed = (Date.now() - this.lastActivity) / 1000;
             const remaining = this.config.idleTimeout - elapsed;

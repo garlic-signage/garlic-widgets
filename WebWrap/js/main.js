@@ -7,24 +7,21 @@ import {PlayerClient} from "./PlayerClient.js";
 import {OverlayUI} from "./OverlayUI.js";
 import {IdleManager} from "./IdleManager.js";
 
-export class WebWrapApp
-{
-	#config;
-	#playerClient;
-	#overlayUI;
-	#idleManager;
+export class WebWrapApp {
+    #config;
+    #playerClient;
+    #overlayUI;
+    #idleManager;
 
-    constructor()
-	{
-        this.#config       = new WebWrapConfig();
+    constructor() {
+        this.#config = new WebWrapConfig();
         this.#playerClient = new PlayerClient(this.#config);
-        this.#overlayUI    = new OverlayUI(this.#config);
-        this.#idleManager  = new IdleManager(this.#config, this.#overlayUI, () => this.#onIdleTimeout());
+        this.#overlayUI = new OverlayUI(this.#config);
+        this.#idleManager = new IdleManager(this.#config, this.#overlayUI, () => this.#onIdleTimeout());
 
     }
 
-    init()
-	{
+    init() {
         const frame = document.getElementById('frame');
         if (frame)
             frame.src = this.#config.url;
@@ -32,13 +29,12 @@ export class WebWrapApp
         console.log('[GarlicFrame] Loaded. URL:', this.#config.url, '| Idle timeout:', this.#config.idleTimeout, 's');
     }
 
-    #onIdleTimeout()
-	{
+    #onIdleTimeout() {
         this.#playerClient.resumePlaylist();
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const app = new WebWrapApp();
-	app.init();
+    app.init();
 });

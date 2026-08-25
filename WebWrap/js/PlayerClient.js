@@ -2,24 +2,21 @@
 // Copyright (c) 2026 sagiadinos
 'use strict';
 
-export class PlayerClient
-{
-    constructor(config)
-	{
+export class PlayerClient {
+    constructor(config) {
         this.config = config;
         this.cachedToken = null;
         this.tokenExpiry = 0;
     }
 
-    async getToken()
-	{
+    async getToken() {
         if (this.cachedToken && Date.now() < this.tokenExpiry) {
             return this.cachedToken;
         }
 
         const res = await fetch(`${this.config.playerBase}/v2/oauth2/token`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
             body: JSON.stringify({
                 grant_type: 'password',
                 username: this.config.playerUser,
@@ -36,21 +33,18 @@ export class PlayerClient
         return this.cachedToken;
     }
 
-    async resumePlaylist()
-	{
+    async resumePlaylist() {
         try {
             const token = await this.getToken();
             const res = await fetch(`${this.config.playerBase}/v2/app/switch?access_token=${token}`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ mode: 'start' })
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                body: JSON.stringify({mode: 'start'})
             });
             if (!res.ok)
                 console.warn('[GarlicFrame] switch failed:', res.status);
 
-        }
-		catch (e)
-		{
+        } catch (e) {
             console.error('[GarlicFrame] resumePlaylist error:', e);
         }
     }

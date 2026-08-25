@@ -2,8 +2,7 @@
 // Copyright (c) 2026 sagiadinos
 'use strict';
 
-export class OverlayUI
-{
+export class OverlayUI {
     constructor(config) {
         this.config = config;
         this.overlay = document.getElementById('idle-overlay');

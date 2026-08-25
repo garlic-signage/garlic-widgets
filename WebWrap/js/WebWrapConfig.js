@@ -2,10 +2,8 @@
 // Copyright (c) 2026 sagiadinos
 'use strict';
 
-export class WebWrapConfig
-{
-    constructor()
-	{
+export class WebWrapConfig {
+    constructor() {
         const params = new URLSearchParams(window.location.search);
 
         this.url = params.get('url') || 'https://en.wikipedia.org/wiki/Digital_signage';
@@ -19,8 +17,7 @@ export class WebWrapConfig
         this.showOverlay = (params.get('show_overlay') || 'true') === 'true';
     }
 
-    get playerBase()
-	{
+    get playerBase() {
         return `http://${this.playerHost}:${this.playerPort}`;
     }
 }

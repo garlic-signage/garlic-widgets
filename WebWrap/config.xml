@@ -2,18 +2,25 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:ia="http://schemas.iawidget.org/widgetconfig-1.0">
 
     <name>WebWrap</name>
-    <description>Web-Wrapper Widget for GarlicSignage. Opens any URL in an iframe and returns to the default playlist after a configurable idle timeout.</description>
+    <description>Web-Wrapper Widget for GarlicSignage. Opens any URL in an iframe and returns to the default playlist
+        after a configurable idle timeout.
+    </description>
     <author href="https://garlic-signage.com" email="niko@sagiadinos.com">Niko Sagiadinos</author>
     <content src="index.html"/>
     <icon src="icon.png"/>
 
     <preference name="url" value="https://example.com" ia:label="URL" ia:types="string" ia:mandatory="true"/>
-    <preference name="idle_timeout" ia:default="60" ia:label="Idle Timeout (seconds)" ia:types="integer" ia:mandatory="false"/>
-    <preference name="warn_at" ia:default="10" ia:label="Warn Countdown (seconds)" ia:types="integer" ia:mandatory="false"/>
+    <preference name="idle_timeout" ia:default="60" ia:label="Idle Timeout (seconds)" ia:types="integer"
+                ia:mandatory="false"/>
+    <preference name="warn_at" ia:default="10" ia:label="Warn Countdown (seconds)" ia:types="integer"
+                ia:mandatory="false"/>
     <preference name="show_overlay" ia:default="true" ia:label="Show Overlay" ia:types="string" ia:mandatory="false"/>
-    <preference name="overlay_msg" ia:default="Tap to continue" ia:label="Overlay Message" ia:types="string" ia:mandatory="false"/>
-    <preference name="player_host" ia:default="localhost" ia:label="Player API Host" ia:types="string" ia:mandatory="false"/>
-    <preference name="player_port" ia:default="8080" ia:label="Player API Port" ia:types="integer" ia:mandatory="false"/>
+    <preference name="overlay_msg" ia:default="Tap to continue" ia:label="Overlay Message" ia:types="string"
+                ia:mandatory="false"/>
+    <preference name="player_host" ia:default="localhost" ia:label="Player API Host" ia:types="string"
+                ia:mandatory="false"/>
+    <preference name="player_port" ia:default="8080" ia:label="Player API Port" ia:types="integer"
+                ia:mandatory="false"/>
 
 
 </widget>
