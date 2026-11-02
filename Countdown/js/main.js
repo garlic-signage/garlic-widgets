@@ -8,6 +8,15 @@ import {FlipCountdown} from "./FlipCountdown.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    let I18N = {
+        de: ["Tage", "Stunden", "Minuten", "Sekunden"],
+        en: ["Days", "Hours", "Minutes", "Seconds"],
+        es: ["Días", "Horas", "Minutos", "Segundos"],
+        el: ["Ημέρες", "Ώρες", "Λεπτά", "Δευτερόλεπτα"],
+        fr: ["Jours", "Heures", "Minutes", "Secondes"],
+        ru: ["Дни", "Часы", "Минуты", "Секунды"]
+    };
+
     let config = new WidgetConfig(window.location.search);
     new ThemeApplier(document.documentElement.style).apply(config);
 
